@@ -36,7 +36,7 @@ const agendaEventCardVariants = cva(
   }
 );
 
-export function AgendaEventCard({ event, eventCurrentDay, eventTotalDays }) {
+export function AgendaEventCard({ event, eventCurrentDay, eventTotalDays, className }) {
   const { badgeVariant } = useCalendar();
 
   const startDate = parseISO(event.startDate);
@@ -44,7 +44,7 @@ export function AgendaEventCard({ event, eventCurrentDay, eventTotalDays }) {
 
   const color = badgeVariant === "dot" ? `${event.color}-dot` : event.color;
 
-  const agendaEventCardClasses = agendaEventCardVariants({ color });
+  const agendaEventCardClasses = agendaEventCardVariants({ color, className });
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" || e.key === " ") {

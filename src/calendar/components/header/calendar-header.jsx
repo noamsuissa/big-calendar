@@ -1,6 +1,7 @@
 import { Columns, Grid3x3, List, Plus, Grid2x2, CalendarRange } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 import { UserSelect } from "@/calendar/components/header/user-select";
 import { TodayButton } from "@/calendar/components/header/today-button";
@@ -20,6 +21,11 @@ import { AddEventDialog } from "@/calendar/components/dialogs/add-event-dialog";
  * @param {boolean} [props.showUserSelect=true] - Show user filter select
  * @param {boolean} [props.showAddEventButton=true] - Show add event button
  * @param {Array} [props.availableViews] - Available views to show (default: all)
+ * @param {string} [props.className] - Custom className for the header container
+ * @param {string} [props.leftSectionClassName] - Custom className for left section (today button + navigator)
+ * @param {string} [props.rightSectionClassName] - Custom className for right section (controls)
+ * @param {string} [props.viewSwitcherClassName] - Custom className for view switcher buttons container
+ * @param {string} [props.addButtonClassName] - Custom className for add event button
  */
 export function CalendarHeader({ 
   view, 
@@ -31,6 +37,11 @@ export function CalendarHeader({
   showUserSelect = true,
   showAddEventButton = true,
   availableViews = ["day", "week", "month", "year", "agenda"],
+  className,
+  leftSectionClassName,
+  rightSectionClassName,
+  viewSwitcherClassName,
+  addButtonClassName,
 }) {
   const handleViewChange = (newView) => {
     if (onViewChange) {
@@ -39,20 +50,20 @@ export function CalendarHeader({
   };
 
   return (
-    <div className="flex flex-col gap-4 border-b p-4 lg:flex-row lg:items-center lg:justify-between">
+    <div className={cn("flex flex-col gap-4 border-b p-4 lg:flex-row lg:items-center lg:justify-between", className)}>
       {(showTodayButton || showDateNavigator) && (
-        <div className="flex items-center gap-3">
+        <div className={cn("flex items-center gap-3", leftSectionClassName)}>
           {showTodayButton && <TodayButton />}
           {showDateNavigator && <DateNavigator view={view} events={events} />}
         </div>
       )}
 
       {(showViewSwitcher || showUserSelect || showAddEventButton) && (
-        <div className="flex flex-col items-center gap-1.5 sm:flex-row sm:justify-between">
+        <div className={cn("flex flex-col items-center gap-1.5 sm:flex-row sm:justify-between", rightSectionClassName)}>
           {(showViewSwitcher || showUserSelect) && (
             <div className="flex w-full items-center gap-1.5">
               {showViewSwitcher && (
-                <div className="inline-flex first:rounded-r-none last:rounded-l-none [&:not(:first-child):not(:last-child)]:rounded-none">
+                <div className={cn("inline-flex first:rounded-r-none last:rounded-l-none [&:not(:first-child):not(:last-child)]:rounded-none", viewSwitcherClassName)}>
                   {availableViews.includes("day") && (
                     <Button 
                       aria-label="View by day" 
@@ -121,7 +132,7 @@ export function CalendarHeader({
 
           {showAddEventButton && (
             <AddEventDialog>
-              <Button className="w-full sm:w-auto">
+              <Button className={cn("w-full sm:w-auto", addButtonClassName)}>
                 <Plus />
                 Add Event
               </Button>

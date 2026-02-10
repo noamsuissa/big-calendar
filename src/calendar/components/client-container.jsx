@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { isSameDay, parseISO } from "date-fns";
 
 import { useCalendar } from "@/calendar/contexts/calendar-context";
+import { cn } from "@/lib/utils";
 
 import { DndProviderWrapper } from "@/calendar/components/dnd/dnd-provider";
 
@@ -20,8 +21,19 @@ import { CalendarWeekView } from "@/calendar/components/week-and-day-view/calend
  * @param {Function} props.onViewChange - Callback when view changes
  * @param {boolean} [props.showHeader=true] - Whether to show the calendar header
  * @param {Object} [props.headerProps] - Additional props to pass to CalendarHeader
+ * @param {string} [props.className] - Custom className for the container
+ * @param {string} [props.headerClassName] - Custom className for the header
+ * @param {string} [props.contentClassName] - Custom className for the content area
  */
-export function ClientContainer({ view, onViewChange, showHeader = true, headerProps = {} }) {
+export function ClientContainer({ 
+  view, 
+  onViewChange, 
+  showHeader = true, 
+  headerProps = {},
+  className,
+  headerClassName,
+  contentClassName,
+}) {
   const { selectedDate, selectedUserId, events } = useCalendar();
 
   const filteredEvents = useMemo(() => {
@@ -91,15 +103,25 @@ export function ClientContainer({ view, onViewChange, showHeader = true, headerP
   }, [filteredEvents]);
 
   return (
-    <div className="overflow-hidden rounded-xl border">
-      {showHeader && <CalendarHeader view={view} events={filteredEvents} onViewChange={onViewChange} {...headerProps} />}
+    <div className={cn("overflow-hidden rounded-xl border", className)}>
+      {showHeader && (
+        <CalendarHeader 
+          view={view} 
+          events={filteredEvents} 
+          onViewChange={onViewChange} 
+          className={cn(headerClassName, headerProps.className)}
+          {...headerProps}
+        />
+      )}
 
       <DndProviderWrapper>
-        {view === "day" && <CalendarDayView singleDayEvents={singleDayEvents} multiDayEvents={multiDayEvents} />}
-        {view === "month" && <CalendarMonthView singleDayEvents={singleDayEvents} multiDayEvents={multiDayEvents} />}
-        {view === "week" && <CalendarWeekView singleDayEvents={singleDayEvents} multiDayEvents={multiDayEvents} />}
-        {view === "year" && <CalendarYearView allEvents={eventStartDates} />}
-        {view === "agenda" && <CalendarAgendaView singleDayEvents={singleDayEvents} multiDayEvents={multiDayEvents} />}
+        <div className={contentClassName}>
+          {view === "day" && <CalendarDayView singleDayEvents={singleDayEvents} multiDayEvents={multiDayEvents} />}
+          {view === "month" && <CalendarMonthView singleDayEvents={singleDayEvents} multiDayEvents={multiDayEvents} />}
+          {view === "week" && <CalendarWeekView singleDayEvents={singleDayEvents} multiDayEvents={multiDayEvents} />}
+          {view === "year" && <CalendarYearView allEvents={eventStartDates} />}
+          {view === "agenda" && <CalendarAgendaView singleDayEvents={singleDayEvents} multiDayEvents={multiDayEvents} />}
+        </div>
       </DndProviderWrapper>
     </div>
   );
