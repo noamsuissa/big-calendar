@@ -2,6 +2,7 @@ import { Columns, Grid3x3, List, Plus, Grid2x2, CalendarRange } from "lucide-rea
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useCalendar } from "@/calendar/contexts/calendar-context";
 
 import { UserSelect } from "@/calendar/components/header/user-select";
 import { TodayButton } from "@/calendar/components/header/today-button";
@@ -43,11 +44,16 @@ export function CalendarHeader({
   viewSwitcherClassName,
   addButtonClassName,
 }) {
+  const { singleUser } = useCalendar();
+  
   const handleViewChange = (newView) => {
     if (onViewChange) {
       onViewChange(newView);
     }
   };
+  
+  // Hide user select in single-user mode
+  const shouldShowUserSelect = showUserSelect && !singleUser;
 
   return (
     <div className={cn("flex flex-col gap-4 border-b p-4 lg:flex-row lg:items-center lg:justify-between", className)}>
@@ -126,7 +132,7 @@ export function CalendarHeader({
                 </div>
               )}
 
-              {showUserSelect && <UserSelect />}
+              {shouldShowUserSelect && <UserSelect />}
             </div>
           )}
 

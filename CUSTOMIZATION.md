@@ -719,6 +719,96 @@ Override event colors using CSS variables:
 - `--calendar-event-{color}-bg`
 - `--calendar-event-{color}-text`
 
+## Single-User Mode
+
+For single-user applications, enable single-user mode to hide user selection UI and simplify forms:
+
+```jsx
+<CalendarProvider
+  singleUser={true}
+  currentUser={{
+    id: "user-123",
+    name: "John Doe",
+    picturePath: "/avatar.jpg",
+  }}
+  useMocks={true}
+>
+  <ClientContainer view="month" />
+</CalendarProvider>
+```
+
+### Single-User Features
+
+- **Hides user select** in calendar header automatically
+- **Removes user field** from add/edit event forms
+- **Uses currentUser** automatically for all events
+- **Simplifies forms** - no user selection needed
+
+### Single-User Example
+
+```jsx
+import { CalendarProvider, ClientContainer } from 'big-calendar';
+
+function SingleUserCalendar() {
+  const currentUser = {
+    id: "user-123",
+    name: "John Doe",
+    picturePath: "/avatar.jpg",
+  };
+
+  return (
+    <CalendarProvider
+      singleUser={true}
+      currentUser={currentUser}
+      api={{
+        getEvents: async () => {
+          // Fetch events for currentUser only
+          const response = await fetch(`/api/users/${currentUser.id}/events`);
+          return response.json();
+        },
+        createEvent: async (eventData) => {
+          // Automatically includes currentUser
+          const response = await fetch('/api/events', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              ...eventData,
+              userId: currentUser.id,
+            }),
+          });
+          return response.json();
+        },
+      }}
+    >
+      <ClientContainer view="month" />
+    </CalendarProvider>
+  );
+}
+```
+
+## Form Disclaimer Toggle
+
+Hide form disclaimers/descriptions in dialogs:
+
+```jsx
+<AddEventDialog showFormDisclaimer={false}>
+  <Button>Add Event</Button>
+</AddEventDialog>
+
+<EditEventDialog event={event} showFormDisclaimer={false}>
+  <Button>Edit</Button>
+</EditEventDialog>
+```
+
+Or disable globally by wrapping dialogs:
+
+```jsx
+// In your custom AddEventDialog wrapper
+function CustomAddEventDialog(props) {
+  return <AddEventDialog {...props} showFormDisclaimer={false} />;
+}
+```
+
 ## Notes
 
 - All customization options are optional and have sensible defaults
@@ -728,3 +818,5 @@ Override event colors using CSS variables:
 - The calendar will fall back to mock data if API functions fail and `useMocks` is true
 - Settings can be changed programmatically through the context or via the provided UI components
 - CSS variables and className props can be combined for maximum flexibility
+- Single-user mode automatically hides user selection UI and simplifies forms
+- In single-user mode, `currentUser` is automatically used for all events

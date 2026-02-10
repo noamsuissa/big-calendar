@@ -1,8 +1,12 @@
 import { z } from "zod";
 
-export const eventSchema = z
+/**
+ * Create event schema - user field is optional for single-user mode
+ * @param {boolean} singleUser - Whether single-user mode is enabled
+ */
+export const createEventSchema = (singleUser = false) => z
   .object({
-    user: z.string(),
+    user: singleUser ? z.string().optional() : z.string(),
     title: z.string().min(1, "Title is required"),
     description: z.string().min(1, "Description is required"),
     startDate: z.date({ required_error: "Start date is required" }),
@@ -26,3 +30,6 @@ export const eventSchema = z
       path: ["startDate"],
     }
   );
+
+// Default export for backward compatibility
+export const eventSchema = createEventSchema(false);

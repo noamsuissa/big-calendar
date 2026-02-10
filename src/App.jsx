@@ -73,6 +73,13 @@ function App() {
     // You can trigger additional actions here
   }
 
+  // Example: Single-user mode (uncomment to enable)
+  // const currentUser = {
+  //   id: USERS_MOCK[0].id,
+  //   name: USERS_MOCK[0].name,
+  //   picturePath: USERS_MOCK[0].picturePath,
+  // };
+
   return (
     <CalendarProvider 
       // Option 1: Use mocks (default behavior)
@@ -84,6 +91,10 @@ function App() {
       
       // Option 3: Provide custom API functions
       // api={calendarAPI}
+      
+      // Option 4: Single-user mode
+      singleUser={true}
+      // currentUser={currentUser}
       
       // Custom default settings
       defaultSettings={customSettings}

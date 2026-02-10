@@ -16,7 +16,7 @@ import { Form, FormField, FormLabel, FormItem, FormControl, FormMessage } from "
 import { Select, SelectItem, SelectContent, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogHeader, DialogClose, DialogContent, DialogTrigger, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 
-import { eventSchema } from "@/calendar/schemas";
+import { createEventSchema } from "@/calendar/schemas";
 
 /**
  * AddEventDialog - Dialog for creating new events
@@ -26,17 +26,19 @@ import { eventSchema } from "@/calendar/schemas";
  * @param {Date} [props.startDate] - Pre-filled start date
  * @param {{hour: number, minute: number}} [props.startTime] - Pre-filled start time
  * @param {Function} [props.onEventCreated] - Callback when event is successfully created
+ * @param {boolean} [props.showFormDisclaimer=true] - Show form disclaimer/description
  */
-export function AddEventDialog({ children, startDate, startTime, onEventCreated }) {
-  const { users, createEvent } = useCalendar();
+export function AddEventDialog({ children, startDate, startTime, onEventCreated, showFormDisclaimer = true }) {
+  const { users, createEvent, singleUser, currentUser } = useCalendar();
 
   const { isOpen, onClose, onToggle } = useDisclosure();
 
   const form = useForm({
-    resolver: zodResolver(eventSchema),
+    resolver: zodResolver(createEventSchema(singleUser)),
     defaultValues: {
       title: "",
       description: "",
+      user: singleUser && currentUser ? currentUser.id : undefined,
       startDate: typeof startDate !== "undefined" ? startDate : undefined,
       startTime: typeof startTime !== "undefined" ? startTime : undefined,
     },
@@ -44,10 +46,15 @@ export function AddEventDialog({ children, startDate, startTime, onEventCreated 
 
   const onSubmit = async (values) => {
     try {
-      const user = users.find(user => user.id === values.user);
+      // In single-user mode, use currentUser; otherwise find user from values
+      const user = singleUser 
+        ? currentUser 
+        : users.find(user => user.id === values.user);
 
       if (!user) {
-        form.setError("user", { message: "User not found" });
+        if (!singleUser) {
+          form.setError("user", { message: "User not found" });
+        }
         return;
       }
 
@@ -90,45 +97,49 @@ export function AddEventDialog({ children, startDate, startTime, onEventCreated 
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Add New Event</DialogTitle>
-          <DialogDescription>
-            Create a new calendar event. The event will be saved according to your API configuration.
-          </DialogDescription>
+          {showFormDisclaimer && (
+            <DialogDescription className="mt-2">
+              Create a new calendar event. The event will be saved according to your API configuration.
+            </DialogDescription>
+          )}
         </DialogHeader>
 
         <Form {...form}>
           <form id="event-form" onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4 py-4">
-            <FormField
-              control={form.control}
-              name="user"
-              render={({ field, fieldState }) => (
-                <FormItem>
-                  <FormLabel>Responsible</FormLabel>
-                  <FormControl>
-                    <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger data-invalid={fieldState.invalid}>
-                        <SelectValue placeholder="Select an option" />
-                      </SelectTrigger>
+            {!singleUser && (
+              <FormField
+                control={form.control}
+                name="user"
+                render={({ field, fieldState }) => (
+                  <FormItem>
+                    <FormLabel>Responsible</FormLabel>
+                    <FormControl>
+                      <Select value={field.value} onValueChange={field.onChange}>
+                        <SelectTrigger data-invalid={fieldState.invalid}>
+                          <SelectValue placeholder="Select an option" />
+                        </SelectTrigger>
 
-                      <SelectContent>
-                        {users.map(user => (
-                          <SelectItem key={user.id} value={user.id} className="flex-1">
-                            <div className="flex items-center gap-2">
-                              <Avatar key={user.id} className="size-6">
-                                <AvatarImage src={user.picturePath ?? undefined} alt={user.name} />
-                                <AvatarFallback className="text-xxs">{user.name[0]}</AvatarFallback>
-                              </Avatar>
+                        <SelectContent>
+                          {users.map(user => (
+                            <SelectItem key={user.id} value={user.id} className="flex-1">
+                              <div className="flex items-center gap-2">
+                                <Avatar key={user.id} className="size-6">
+                                  <AvatarImage src={user.picturePath ?? undefined} alt={user.name} />
+                                  <AvatarFallback className="text-xxs">{user.name[0]}</AvatarFallback>
+                                </Avatar>
 
-                              <p className="truncate">{user.name}</p>
-                            </div>
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                                <p className="truncate">{user.name}</p>
+                              </div>
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            )}
 
             <FormField
               control={form.control}

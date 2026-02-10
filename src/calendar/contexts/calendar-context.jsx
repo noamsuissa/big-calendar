@@ -29,6 +29,11 @@ const DEFAULT_VISIBLE_HOURS = { from: 7, to: 18 };
  * @param {(event: Object) => Promise<Object>} [props.api.updateEvent] - Function to update event
  * @param {(eventId: string|number) => Promise<void>} [props.api.deleteEvent] - Function to delete event
  * @param {boolean} [props.useMocks=false] - Whether to use mock data when API functions are not provided
+ * @param {boolean} [props.singleUser=false] - Single-user mode: hides user selection UI and makes user field optional in forms
+ * @param {Object} [props.currentUser] - Current user object for single-user mode (required if singleUser=true)
+ * @param {string} [props.currentUser.id] - Current user ID
+ * @param {string} [props.currentUser.name] - Current user name
+ * @param {string} [props.currentUser.picturePath] - Current user avatar path
  * @param {Object} [props.defaultSettings] - Default calendar settings
  * @param {string} [props.defaultSettings.badgeVariant="colored"] - Default badge variant
  * @param {{from: number, to: number}} [props.defaultSettings.visibleHours] - Default visible hours
@@ -44,6 +49,8 @@ export function CalendarProvider({
   events: initialEvents,
   api = {},
   useMocks = false,
+  singleUser = false,
+  currentUser,
   defaultSettings = {},
   onSettingsChange,
   onEventCreate,
@@ -61,6 +68,11 @@ export function CalendarProvider({
   const [users, setUsers] = useState(initialUsers || []);
   const [events, setEvents] = useState(initialEvents || []);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Single user mode: use currentUser if provided, otherwise use first user
+  const effectiveCurrentUser = singleUser 
+    ? (currentUser || (users.length > 0 ? users[0] : null) || (initialUsers && initialUsers.length > 0 ? initialUsers[0] : null))
+    : null;
 
   // Determine if we should use mocks
   const shouldUseMocks = useMocks || (!api.getEvents && !initialEvents);
@@ -235,6 +247,9 @@ export function CalendarProvider({
         // API object for direct access
         api,
         useMocks: shouldUseMocks,
+        // Single user mode
+        singleUser,
+        currentUser: effectiveCurrentUser,
       }}
     >
       {children}

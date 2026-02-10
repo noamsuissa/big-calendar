@@ -16,7 +16,7 @@ import { Form, FormField, FormLabel, FormItem, FormControl, FormMessage } from "
 import { Select, SelectItem, SelectContent, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogHeader, DialogClose, DialogContent, DialogTrigger, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 
-import { eventSchema } from "@/calendar/schemas";
+import { createEventSchema } from "@/calendar/schemas";
 
 /**
  * EditEventDialog - Dialog for editing existing events
@@ -25,16 +25,17 @@ import { eventSchema } from "@/calendar/schemas";
  * @param {React.ReactNode} props.children - Trigger element
  * @param {Object} props.event - Event to edit
  * @param {Function} [props.onEventUpdated] - Callback when event is successfully updated
+ * @param {boolean} [props.showFormDisclaimer=true] - Show form disclaimer/description
  */
-export function EditEventDialog({ children, event, onEventUpdated }) {
+export function EditEventDialog({ children, event, onEventUpdated, showFormDisclaimer = true }) {
   const { isOpen, onClose, onToggle } = useDisclosure();
 
-  const { users, updateEvent } = useCalendar();
+  const { users, updateEvent, singleUser, currentUser } = useCalendar();
 
   const form = useForm({
-    resolver: zodResolver(eventSchema),
+    resolver: zodResolver(createEventSchema(singleUser)),
     defaultValues: {
-      user: event.user.id,
+      user: singleUser ? (currentUser?.id || event.user.id) : event.user.id,
       title: event.title,
       description: event.description,
       startDate: parseISO(event.startDate),
@@ -47,10 +48,15 @@ export function EditEventDialog({ children, event, onEventUpdated }) {
 
   const onSubmit = async (values) => {
     try {
-      const user = users.find(user => user.id === values.user);
+      // In single-user mode, use currentUser; otherwise find user from values
+      const user = singleUser 
+        ? currentUser 
+        : users.find(user => user.id === values.user);
 
       if (!user) {
-        form.setError("user", { message: "User not found" });
+        if (!singleUser) {
+          form.setError("user", { message: "User not found" });
+        }
         return;
       }
 
@@ -85,45 +91,49 @@ export function EditEventDialog({ children, event, onEventUpdated }) {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Edit Event</DialogTitle>
-          <DialogDescription>
-            Update the event details. Changes will be saved according to your API configuration.
-          </DialogDescription>
+          {showFormDisclaimer && (
+            <DialogDescription className="mt-2">
+              Update the event details. Changes will be saved according to your API configuration.
+            </DialogDescription>
+          )}
         </DialogHeader>
 
         <Form {...form}>
           <form id="event-form" onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4 py-4">
-            <FormField
-              control={form.control}
-              name="user"
-              render={({ field, fieldState }) => (
-                <FormItem>
-                  <FormLabel>Responsible</FormLabel>
-                  <FormControl>
-                    <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger data-invalid={fieldState.invalid}>
-                        <SelectValue placeholder="Select an option" />
-                      </SelectTrigger>
+            {!singleUser && (
+              <FormField
+                control={form.control}
+                name="user"
+                render={({ field, fieldState }) => (
+                  <FormItem>
+                    <FormLabel>Responsible</FormLabel>
+                    <FormControl>
+                      <Select value={field.value} onValueChange={field.onChange}>
+                        <SelectTrigger data-invalid={fieldState.invalid}>
+                          <SelectValue placeholder="Select an option" />
+                        </SelectTrigger>
 
-                      <SelectContent>
-                        {users.map(user => (
-                          <SelectItem key={user.id} value={user.id} className="flex-1">
-                            <div className="flex items-center gap-2">
-                              <Avatar key={user.id} className="size-6">
-                                <AvatarImage src={user.picturePath ?? undefined} alt={user.name} />
-                                <AvatarFallback className="text-xxs">{user.name[0]}</AvatarFallback>
-                              </Avatar>
+                        <SelectContent>
+                          {users.map(user => (
+                            <SelectItem key={user.id} value={user.id} className="flex-1">
+                              <div className="flex items-center gap-2">
+                                <Avatar key={user.id} className="size-6">
+                                  <AvatarImage src={user.picturePath ?? undefined} alt={user.name} />
+                                  <AvatarFallback className="text-xxs">{user.name[0]}</AvatarFallback>
+                                </Avatar>
 
-                              <p className="truncate">{user.name}</p>
-                            </div>
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                                <p className="truncate">{user.name}</p>
+                              </div>
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            )}
 
             <FormField
               control={form.control}
