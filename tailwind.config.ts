@@ -3,12 +3,13 @@ import animatePlugin from "tailwindcss-animate";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./src/**/*.tsx"],
+  content: ["./src/**/*.{jsx,tsx}"],
   darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
-        inter: "var(--font-inter)",
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       fontSize: {
         xxs: ["0.625rem", "1rem"],
