@@ -332,10 +332,399 @@ interface CalendarEvent {
 }
 ```
 
+## Styling Customization
+
+The calendar is fully customizable for styling without affecting the default UI appearance. You can customize colors, spacing, borders, typography, and layout through CSS variables and className props.
+
+### CSS Variables
+
+Override CSS variables in your application's CSS to customize the calendar appearance:
+
+```css
+:root {
+  /* Color customization (already supported) */
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --border: 240 5.9% 90%;
+  --radius: 0.5rem;
+  
+  /* Calendar-specific spacing and layout */
+  --calendar-container-border-radius: 0.75rem; /* rounded-xl */
+  --calendar-container-padding: 0;
+  --calendar-header-padding: 1rem; /* p-4 */
+  --calendar-header-gap: 1rem; /* gap-4 */
+  --calendar-header-border-width: 1px;
+  --calendar-spacing-xs: 0.25rem; /* gap-1 */
+  --calendar-spacing-sm: 0.5rem; /* gap-2 */
+  --calendar-spacing-md: 0.75rem; /* gap-3 */
+  --calendar-spacing-lg: 1rem; /* gap-4 */
+  --calendar-spacing-xl: 1.5rem; /* gap-6 */
+}
+
+.dark {
+  /* Override for dark mode */
+  --calendar-container-border-radius: 0.75rem;
+  --calendar-header-padding: 1rem;
+  /* ... other variables */
+}
+```
+
+### className Props
+
+Add custom classes to override or extend component styles:
+
+```jsx
+<ClientContainer
+  view="month"
+  className="my-custom-calendar" // Custom container styles
+  headerClassName="custom-header" // Custom header styles
+  contentClassName="custom-content" // Custom content area styles
+  headerProps={{
+    className: "additional-header-class",
+    leftSectionClassName: "custom-left-section",
+    rightSectionClassName: "custom-right-section",
+    viewSwitcherClassName: "custom-view-switcher",
+    addButtonClassName: "custom-add-button",
+  }}
+/>
+```
+
+### CSS Override Examples
+
+#### Custom Border Radius
+
+```css
+/* Make calendar container square */
+:root {
+  --calendar-container-border-radius: 0;
+}
+
+/* Or override with className */
+.my-calendar {
+  border-radius: 0 !important;
+}
+```
+
+#### Custom Spacing
+
+```css
+/* Increase header padding */
+:root {
+  --calendar-header-padding: 1.5rem;
+}
+
+/* Or use className */
+.custom-header {
+  padding: 1.5rem !important;
+}
+```
+
+#### Custom Colors
+
+```css
+/* Change calendar border color */
+:root {
+  --border: 220 13% 91%; /* Custom border color */
+}
+
+/* Change primary color */
+:root {
+  --primary: 221 83% 53%; /* Blue primary */
+}
+```
+
+#### Custom Layout
+
+```jsx
+// Remove border radius
+<ClientContainer
+  view="month"
+  className="rounded-none"
+/>
+
+// Add custom shadow
+<ClientContainer
+  view="month"
+  className="shadow-2xl"
+/>
+
+// Custom header styling
+<ClientContainer
+  view="month"
+  headerProps={{
+    className: "bg-gradient-to-r from-blue-500 to-purple-500 text-white",
+  }}
+/>
+```
+
+### Tailwind Class Overrides
+
+Since the calendar uses Tailwind CSS, you can override classes using Tailwind's specificity:
+
+```css
+/* Override specific calendar classes */
+.big-calendar-container {
+  border-radius: 0.5rem; /* Override rounded-xl */
+  padding: 1rem; /* Add padding */
+}
+
+.big-calendar-header {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  color: white;
+}
+```
+
+### Complete Styling Example
+
+```jsx
+import { CalendarProvider, ClientContainer } from 'big-calendar';
+import './custom-calendar-styles.css'; // Your custom CSS
+
+function MyStyledCalendar() {
+  return (
+    <CalendarProvider useMocks={true}>
+      <ClientContainer
+        view="month"
+        className="my-custom-calendar shadow-lg"
+        headerClassName="bg-blue-50 border-blue-200"
+        contentClassName="p-2"
+        headerProps={{
+          leftSectionClassName: "gap-4",
+          rightSectionClassName: "gap-2",
+          addButtonClassName: "bg-blue-600 hover:bg-blue-700",
+        }}
+      />
+    </CalendarProvider>
+  );
+}
+```
+
+```css
+/* custom-calendar-styles.css */
+:root {
+  /* Container and header */
+  --calendar-container-border-radius: 1rem;
+  --calendar-header-padding: 1.25rem;
+  --calendar-spacing-lg: 1.25rem;
+  
+  /* Event cards */
+  --calendar-event-border-radius: 0.5rem;
+  --calendar-event-border-width: 2px;
+  --calendar-event-padding-x: 0.75rem;
+  --calendar-event-padding-y: 0.5rem;
+  
+  /* Custom event colors */
+  --calendar-event-blue-border: 217 91% 50%;
+  --calendar-event-blue-bg: 217 91% 98%;
+  --calendar-event-blue-text: 217 91% 25%;
+  
+  --calendar-event-red-border: 0 84% 55%;
+  --calendar-event-red-bg: 0 84% 97%;
+  --calendar-event-red-text: 0 84% 25%;
+}
+
+.my-custom-calendar {
+  border: 2px solid #e5e7eb;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Override specific event styles */
+.my-custom-calendar [class*="border-blue"] {
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+```
+
+### Event-Specific Styling Examples
+
+#### Custom Event Border Radius
+
+```css
+/* Make all events rounded */
+:root {
+  --calendar-event-border-radius: 1rem; /* Fully rounded */
+}
+
+/* Or target specific views */
+.calendar-month-view [class*="event"] {
+  border-radius: 0.25rem; /* Less rounded in month view */
+}
+
+.calendar-week-view [class*="event"] {
+  border-radius: 0.75rem; /* More rounded in week view */
+}
+```
+
+#### Custom Event Colors
+
+```css
+/* Change all blue events to purple */
+.border-blue-200 {
+  border-color: hsl(262, 83%, 58%) !important;
+  background-color: hsl(262, 83%, 95%) !important;
+  color: hsl(262, 83%, 30%) !important;
+}
+
+/* Make red events more vibrant */
+.border-red-200 {
+  border-color: hsl(0, 100%, 50%) !important;
+  background-color: hsl(0, 100%, 97%) !important;
+  color: hsl(0, 100%, 20%) !important;
+}
+```
+
+#### Custom Event Borders
+
+```css
+/* Thicker borders for all events */
+:root {
+  --calendar-event-border-width: 2px;
+}
+
+/* Dashed borders */
+[class*="border-blue-200"],
+[class*="border-green-200"],
+[class*="border-red-200"] {
+  border-style: dashed !important;
+}
+
+/* No borders */
+[class*="event"] {
+  border-width: 0 !important;
+}
+```
+
+### Styling Best Practices
+
+1. **Use CSS Variables** for theme-wide changes (colors, spacing, borders)
+2. **Use className Props** for component-specific overrides
+3. **Use Tailwind Classes** for quick utility-based styling
+4. **Combine Approaches** - Use CSS variables for defaults and className for specific instances
+5. **Maintain Specificity** - Use `!important` sparingly, prefer higher specificity selectors
+
+### Event Card Customization
+
+Customize event cards (colors, borders, radiuses) through CSS variables and className props:
+
+#### Event Colors
+
+Override event colors using CSS variables:
+
+```css
+:root {
+  /* Blue event colors */
+  --calendar-event-blue-border: 217 91% 60%;
+  --calendar-event-blue-bg: 217 91% 95%;
+  --calendar-event-blue-text: 217 91% 30%;
+  
+  /* Green event colors */
+  --calendar-event-green-border: 142 71% 45%;
+  --calendar-event-green-bg: 142 71% 95%;
+  --calendar-event-green-text: 142 71% 25%;
+  
+  /* Red event colors */
+  --calendar-event-red-border: 0 84% 60%;
+  --calendar-event-red-bg: 0 84% 95%;
+  --calendar-event-red-text: 0 84% 30%;
+  
+  /* Customize all colors similarly */
+  --calendar-event-yellow-border: 43 96% 56%;
+  --calendar-event-purple-border: 262 83% 58%;
+  --calendar-event-orange-border: 25 95% 53%;
+  --calendar-event-gray-border: 0 0% 90%;
+}
+```
+
+#### Event Border Radius and Spacing
+
+```css
+:root {
+  --calendar-event-border-radius: 0.5rem; /* Change from default 0.375rem */
+  --calendar-event-border-width: 2px; /* Thicker borders */
+  --calendar-event-padding-x: 0.75rem; /* More horizontal padding */
+  --calendar-event-padding-y: 0.5rem; /* More vertical padding */
+  --calendar-event-gap: 0.25rem; /* More gap between elements */
+}
+```
+
+#### Override Event Styles with CSS
+
+```css
+/* Target all event cards */
+[class*="event"] {
+  border-radius: 0.5rem !important;
+  border-width: 2px !important;
+}
+
+/* Target specific event colors */
+.border-blue-200 {
+  border-color: #your-custom-blue !important;
+  background-color: #your-custom-bg !important;
+}
+
+/* Target event cards in specific views */
+.calendar-month-view [class*="event"] {
+  border-radius: 0.25rem;
+}
+
+.calendar-week-view [class*="event"] {
+  border-radius: 0.5rem;
+}
+```
+
+#### Override Event Colors Completely
+
+```css
+/* Replace all blue events with custom color */
+.border-blue-200 {
+  border-color: hsl(280, 70%, 50%) !important;
+  background-color: hsl(280, 70%, 95%) !important;
+  color: hsl(280, 70%, 20%) !important;
+}
+
+/* Dark mode overrides */
+.dark .border-blue-200 {
+  border-color: hsl(280, 70%, 40%) !important;
+  background-color: hsl(280, 70%, 10%) !important;
+  color: hsl(280, 70%, 85%) !important;
+}
+```
+
+### Available CSS Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--calendar-container-border-radius` | `0.75rem` | Container border radius |
+| `--calendar-container-padding` | `0` | Container padding |
+| `--calendar-header-padding` | `1rem` | Header padding |
+| `--calendar-header-gap` | `1rem` | Header gap spacing |
+| `--calendar-header-border-width` | `1px` | Header border width |
+| `--calendar-spacing-xs` | `0.25rem` | Extra small spacing |
+| `--calendar-spacing-sm` | `0.5rem` | Small spacing |
+| `--calendar-spacing-md` | `0.75rem` | Medium spacing |
+| `--calendar-spacing-lg` | `1rem` | Large spacing |
+| `--calendar-spacing-xl` | `1.5rem` | Extra large spacing |
+| `--calendar-event-border-radius` | `0.375rem` | Event card border radius |
+| `--calendar-event-border-width` | `1px` | Event card border width |
+| `--calendar-event-padding-x` | `0.5rem` | Event card horizontal padding |
+| `--calendar-event-padding-y` | `0.375rem` | Event card vertical padding |
+| `--calendar-event-gap` | `0.125rem` | Event card internal gap |
+| `--calendar-event-{color}-border` | Various | Event border color (HSL) |
+| `--calendar-event-{color}-bg` | Various | Event background color (HSL) |
+| `--calendar-event-{color}-text` | Various | Event text color (HSL) |
+
+**Event Color Variables** (replace `{color}` with: `blue`, `green`, `red`, `yellow`, `purple`, `orange`, `gray`):
+- `--calendar-event-{color}-border`
+- `--calendar-event-{color}-bg`
+- `--calendar-event-{color}-text`
+
 ## Notes
 
 - All customization options are optional and have sensible defaults
-- The UI appearance remains unchanged - only functionality is customized
+- The UI appearance remains unchanged by default - only functionality is customized
+- Styling customization does not affect functionality - all features work the same
 - API functions can be async and should handle errors appropriately
 - The calendar will fall back to mock data if API functions fail and `useMocks` is true
 - Settings can be changed programmatically through the context or via the provided UI components
+- CSS variables and className props can be combined for maximum flexibility
