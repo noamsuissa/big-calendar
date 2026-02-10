@@ -18,8 +18,17 @@ import { Dialog, DialogHeader, DialogClose, DialogContent, DialogTrigger, Dialog
 
 import { eventSchema } from "@/calendar/schemas";
 
-export function AddEventDialog({ children, startDate, startTime }) {
-  const { users } = useCalendar();
+/**
+ * AddEventDialog - Dialog for creating new events
+ * 
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - Trigger element
+ * @param {Date} [props.startDate] - Pre-filled start date
+ * @param {{hour: number, minute: number}} [props.startTime] - Pre-filled start time
+ * @param {Function} [props.onEventCreated] - Callback when event is successfully created
+ */
+export function AddEventDialog({ children, startDate, startTime, onEventCreated }) {
+  const { users, createEvent } = useCalendar();
 
   const { isOpen, onClose, onToggle } = useDisclosure();
 
@@ -33,10 +42,38 @@ export function AddEventDialog({ children, startDate, startTime }) {
     },
   });
 
-  const onSubmit = (_values) => {
-    // TO DO: Create use-add-event hook
-    onClose();
-    form.reset();
+  const onSubmit = async (values) => {
+    try {
+      const user = users.find(user => user.id === values.user);
+
+      if (!user) {
+        form.setError("user", { message: "User not found" });
+        return;
+      }
+
+      const startDateTime = new Date(values.startDate);
+      startDateTime.setHours(values.startTime.hour, values.startTime.minute, 0, 0);
+
+      const endDateTime = new Date(values.endDate);
+      endDateTime.setHours(values.endTime.hour, values.endTime.minute, 0, 0);
+
+      const eventData = {
+        user,
+        title: values.title,
+        color: values.color,
+        description: values.description,
+        startDate: startDateTime.toISOString(),
+        endDate: endDateTime.toISOString(),
+      };
+
+      const newEvent = await createEvent(eventData);
+      onEventCreated?.(newEvent);
+      onClose();
+      form.reset();
+    } catch (error) {
+      console.error("Failed to create event:", error);
+      // You can add error handling UI here if needed
+    }
   };
 
   useEffect(() => {
@@ -54,9 +91,7 @@ export function AddEventDialog({ children, startDate, startTime }) {
         <DialogHeader>
           <DialogTitle>Add New Event</DialogTitle>
           <DialogDescription>
-            <AlertTriangle className="mr-1 inline-block size-4 text-yellow-500" />
-            This form is for demonstration purposes only and will not actually create an event. In a real application, submit the form to the backend API to
-            save the event.
+            Create a new calendar event. The event will be saved according to your API configuration.
           </DialogDescription>
         </DialogHeader>
 

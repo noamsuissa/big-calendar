@@ -1,22 +1,15 @@
 import { useCalendar } from "@/calendar/contexts/calendar-context";
 
+/**
+ * useUpdateEvent - Hook for updating events
+ * 
+ * @deprecated Use useCalendar().updateEvent directly instead
+ * This hook is kept for backward compatibility but now just returns the updateEvent from context
+ * 
+ * @returns {{updateEvent: Function}} Object with updateEvent function
+ */
 export function useUpdateEvent() {
-  const { setLocalEvents } = useCalendar();
-
-  // This is just and example, in a real scenario
-  // you would call an API to update the event
-  const updateEvent = (event) => {
-    const newEvent = event;
-
-    newEvent.startDate = new Date(event.startDate).toISOString();
-    newEvent.endDate = new Date(event.endDate).toISOString();
-
-    setLocalEvents(prev => {
-      const index = prev.findIndex(e => e.id === event.id);
-      if (index === -1) return prev;
-      return [...prev.slice(0, index), newEvent, ...prev.slice(index + 1)];
-    });
-  };
+  const { updateEvent } = useCalendar();
 
   return { updateEvent };
 }

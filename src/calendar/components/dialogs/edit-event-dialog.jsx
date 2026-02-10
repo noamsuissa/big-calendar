@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useDisclosure } from "@/hooks/use-disclosure";
 import { useCalendar } from "@/calendar/contexts/calendar-context";
-import { useUpdateEvent } from "@/calendar/hooks/use-update-event";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -19,12 +18,18 @@ import { Dialog, DialogHeader, DialogClose, DialogContent, DialogTrigger, Dialog
 
 import { eventSchema } from "@/calendar/schemas";
 
-export function EditEventDialog({ children, event }) {
+/**
+ * EditEventDialog - Dialog for editing existing events
+ * 
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - Trigger element
+ * @param {Object} props.event - Event to edit
+ * @param {Function} [props.onEventUpdated] - Callback when event is successfully updated
+ */
+export function EditEventDialog({ children, event, onEventUpdated }) {
   const { isOpen, onClose, onToggle } = useDisclosure();
 
-  const { users } = useCalendar();
-
-  const { updateEvent } = useUpdateEvent();
+  const { users, updateEvent } = useCalendar();
 
   const form = useForm({
     resolver: zodResolver(eventSchema),
@@ -40,28 +45,37 @@ export function EditEventDialog({ children, event }) {
     },
   });
 
-  const onSubmit = (values) => {
-    const user = users.find(user => user.id === values.user);
+  const onSubmit = async (values) => {
+    try {
+      const user = users.find(user => user.id === values.user);
 
-    if (!user) throw new Error("User not found");
+      if (!user) {
+        form.setError("user", { message: "User not found" });
+        return;
+      }
 
-    const startDateTime = new Date(values.startDate);
-    startDateTime.setHours(values.startTime.hour, values.startTime.minute);
+      const startDateTime = new Date(values.startDate);
+      startDateTime.setHours(values.startTime.hour, values.startTime.minute, 0, 0);
 
-    const endDateTime = new Date(values.endDate);
-    endDateTime.setHours(values.endTime.hour, values.endTime.minute);
+      const endDateTime = new Date(values.endDate);
+      endDateTime.setHours(values.endTime.hour, values.endTime.minute, 0, 0);
 
-    updateEvent({
-      ...event,
-      user,
-      title: values.title,
-      color: values.color,
-      description: values.description,
-      startDate: startDateTime.toISOString(),
-      endDate: endDateTime.toISOString(),
-    });
+      const updatedEvent = await updateEvent({
+        ...event,
+        user,
+        title: values.title,
+        color: values.color,
+        description: values.description,
+        startDate: startDateTime.toISOString(),
+        endDate: endDateTime.toISOString(),
+      });
 
-    onClose();
+      onEventUpdated?.(updatedEvent);
+      onClose();
+    } catch (error) {
+      console.error("Failed to update event:", error);
+      // You can add error handling UI here if needed
+    }
   };
 
   return (
@@ -72,9 +86,7 @@ export function EditEventDialog({ children, event }) {
         <DialogHeader>
           <DialogTitle>Edit Event</DialogTitle>
           <DialogDescription>
-            <AlertTriangle className="mr-1 inline-block size-4 text-yellow-500" />
-            This form only updates the current event state locally for demonstration purposes. If you move an event after editing, some inconsistencies may
-            occur. In a real application, you should submit this form to a backend API to persist the changes.
+            Update the event details. Changes will be saved according to your API configuration.
           </DialogDescription>
         </DialogHeader>
 

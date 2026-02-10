@@ -12,7 +12,16 @@ import { CalendarAgendaView } from "@/calendar/components/agenda-view/calendar-a
 import { CalendarDayView } from "@/calendar/components/week-and-day-view/calendar-day-view";
 import { CalendarWeekView } from "@/calendar/components/week-and-day-view/calendar-week-view";
 
-export function ClientContainer({ view, onViewChange }) {
+/**
+ * ClientContainer - Main calendar container component
+ * 
+ * @param {Object} props
+ * @param {string} props.view - Current view ('day' | 'week' | 'month' | 'year' | 'agenda')
+ * @param {Function} props.onViewChange - Callback when view changes
+ * @param {boolean} [props.showHeader=true] - Whether to show the calendar header
+ * @param {Object} [props.headerProps] - Additional props to pass to CalendarHeader
+ */
+export function ClientContainer({ view, onViewChange, showHeader = true, headerProps = {} }) {
   const { selectedDate, selectedUserId, events } = useCalendar();
 
   const filteredEvents = useMemo(() => {
@@ -83,7 +92,7 @@ export function ClientContainer({ view, onViewChange }) {
 
   return (
     <div className="overflow-hidden rounded-xl border">
-      <CalendarHeader view={view} events={filteredEvents} onViewChange={onViewChange} />
+      {showHeader && <CalendarHeader view={view} events={filteredEvents} onViewChange={onViewChange} {...headerProps} />}
 
       <DndProviderWrapper>
         {view === "day" && <CalendarDayView singleDayEvents={singleDayEvents} multiDayEvents={multiDayEvents} />}
