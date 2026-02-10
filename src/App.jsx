@@ -12,35 +12,31 @@ function App() {
         <Header />
         
         <main className="mx-auto flex max-w-screen-2xl flex-col gap-4 p-4">
-          <div className="flex flex-col gap-4 lg:flex-row">
-            <div className="flex-1">
-              <ClientContainer view={view} onViewChange={setView} />
-            </div>
-            
-            <aside className="w-full space-y-4 lg:w-80">
-              <Accordion type="multiple" defaultValue={['badge-variant']} className="w-full">
-                <AccordionItem value="badge-variant">
-                  <AccordionTrigger>Badge Variant</AccordionTrigger>
-                  <AccordionContent>
-                    <ChangeBadgeVariantInput />
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="visible-hours">
-                  <AccordionTrigger>Visible Hours</AccordionTrigger>
-                  <AccordionContent>
-                    <ChangeVisibleHoursInput />
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="working-hours">
-                  <AccordionTrigger>Working Hours</AccordionTrigger>
-                  <AccordionContent>
-                    <ChangeWorkingHoursInput />
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </aside>
+          <ClientContainer view={view} onViewChange={setView} />
+          
+          <div className="w-full">
+            <Accordion type="multiple" defaultValue={['badge-variant']} className="w-full">
+              <AccordionItem value="badge-variant">
+                <AccordionTrigger>Badge Variant</AccordionTrigger>
+                <AccordionContent>
+                  <ChangeBadgeVariantInput />
+                </AccordionContent>
+              </AccordionItem>
+              
+              <AccordionItem value="visible-hours">
+                <AccordionTrigger>Visible Hours</AccordionTrigger>
+                <AccordionContent>
+                  <ChangeVisibleHoursInput />
+                </AccordionContent>
+              </AccordionItem>
+              
+              <AccordionItem value="working-hours">
+                <AccordionTrigger>Working Hours</AccordionTrigger>
+                <AccordionContent>
+                  <ChangeWorkingHoursInput />
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </main>
       </div>
