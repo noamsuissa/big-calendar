@@ -10,13 +10,13 @@ export function TodayButton() {
 
   return (
     <button
-      className="flex size-14 flex-col items-start overflow-hidden rounded-lg border focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+      className="bigcal-flex bigcal-size-14 bigcal-flex-col bigcal-items-start bigcal-overflow-hidden bigcal-rounded-lg bigcal-border focus-visible:bigcal-outline-none focus-visible:bigcal-ring-1 focus-visible:bigcal-ring-ring"
       onClick={handleClick}
     >
-      <p className="flex h-6 w-full items-center justify-center bg-primary text-center text-xs font-semibold text-primary-foreground">
+      <p className="bigcal-flex bigcal-h-6 bigcal-w-full bigcal-items-center bigcal-justify-center bigcal-bg-primary bigcal-text-center bigcal-text-xs bigcal-font-semibold bigcal-text-primary-foreground">
         {formatDate(today, "MMM").toUpperCase()}
       </p>
-      <p className="flex w-full items-center justify-center text-lg font-bold">{today.getDate()}</p>
+      <p className="bigcal-flex bigcal-w-full bigcal-items-center bigcal-justify-center bigcal-text-lg bigcal-font-bold">{today.getDate()}</p>
     </button>
   );
 }

@@ -6,11 +6,21 @@ import { cn } from "@/lib/utils";
 // ================================== //
 
 const TimeInput = forwardRef(
-  ({ className, dateInputClassName, segmentClassName, disabled, "data-invalid": dataInvalid, ...props }, ref) => {
+  (
+    {
+      className,
+      dateInputClassName,
+      segmentClassName,
+      disabled,
+      "data-invalid": dataInvalid,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <TimeField
         ref={ref}
-        className={cn("relative", className)}
+        className={cn("bigcal-relative", className)}
         isDisabled={disabled}
         isInvalid={dataInvalid}
         {...props}
@@ -19,9 +29,9 @@ const TimeInput = forwardRef(
       >
         <DateInput
           className={cn(
-            "peer inline-flex h-9 w-full items-center overflow-hidden whitespace-nowrap rounded-md border bg-background px-3 py-2 text-sm shadow-black",
-            "data-[focus-within]:outline-none data-[focus-within]:ring-1 data-[focus-within]:ring-ring",
-            "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+            "bigcal-peer bigcal-inline-flex bigcal-h-9 bigcal-w-full bigcal-items-center bigcal-overflow-hidden bigcal-whitespace-nowrap bigcal-rounded-md bigcal-border bigcal-bg-background bigcal-px-3 bigcal-py-2 bigcal-text-sm bigcal-shadow-black",
+            "data-[focus-within]:bigcal-outline-none data-[focus-within]:bigcal-ring-1 data-[focus-within]:bigcal-ring-ring",
+            "data-[disabled]:bigcal-cursor-not-allowed data-[disabled]:bigcal-opacity-50",
             dateInputClassName
           )}
         >
@@ -29,10 +39,10 @@ const TimeInput = forwardRef(
             <DateSegment
               segment={segment}
               className={cn(
-                "inline rounded p-0.5 caret-transparent outline outline-0",
-                "data-[focused]:bg-foreground/10 data-[focused]:text-foreground",
-                "data-[placeholder]:text-muted-foreground",
-                "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+                "bigcal-inline bigcal-rounded bigcal-p-0.5 bigcal-caret-transparent bigcal-outline bigcal-outline-0",
+                "data-[focused]:bigcal-bg-foreground/10 data-[focused]:bigcal-text-foreground",
+                "data-[placeholder]:bigcal-text-muted-foreground",
+                "data-[disabled]:bigcal-cursor-not-allowed data-[disabled]:bigcal-opacity-50",
                 segmentClassName
               )}
             />

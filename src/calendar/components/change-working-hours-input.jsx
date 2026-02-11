@@ -64,37 +64,37 @@ export function ChangeWorkingHoursInput() {
   };
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-2">
-        <p className="text-sm font-semibold">Change working hours</p>
+    <div className="bigcal-flex bigcal-flex-col bigcal-gap-2">
+      <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+        <p className="bigcal-text-sm bigcal-font-semibold">Change working hours</p>
 
         <TooltipProvider delayDuration={100}>
           <Tooltip>
             <TooltipTrigger>
-              <Info className="size-3" />
+              <Info className="bigcal-size-3" />
             </TooltipTrigger>
 
-            <TooltipContent className="max-w-80 text-center">
+            <TooltipContent className="bigcal-max-w-80 bigcal-text-center">
               <p>This will apply a dashed background to the hour cells that fall outside the working hours — only for week and day views.</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
       </div>
 
-      <div className="space-y-4">
+      <div className="bigcal-space-y-4">
         {DAYS_OF_WEEK.map(day => {
           const isDayActive = localWorkingHours[day.index].from > 0 || localWorkingHours[day.index].to > 0;
 
           return (
-            <div key={day.index} className="flex items-center gap-4">
-              <div className="flex w-40 items-center gap-2">
+            <div key={day.index} className="bigcal-flex bigcal-items-center bigcal-gap-4">
+              <div className="bigcal-flex bigcal-w-40 bigcal-items-center bigcal-gap-2">
                 <Switch checked={isDayActive} onCheckedChange={() => handleToggleDay(day.index)} />
-                <span className="text-sm font-medium">{day.name}</span>
+                <span className="bigcal-text-sm bigcal-font-medium">{day.name}</span>
               </div>
 
               {isDayActive ? (
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2">
+                <div className="bigcal-flex bigcal-items-center bigcal-gap-4">
+                  <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
                     <span>From</span>
                     <TimeInput
                       id={`${day.name.toLowerCase()}-from`}
@@ -105,7 +105,7 @@ export function ChangeWorkingHoursInput() {
                     />
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
                     <span>To</span>
                     <TimeInput
                       id={`${day.name.toLowerCase()}-to`}
@@ -117,8 +117,8 @@ export function ChangeWorkingHoursInput() {
                   </div>
                 </div>
               ) : (
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <Moon className="size-4" />
+                <div className="bigcal-flex bigcal-items-center bigcal-gap-2 bigcal-text-muted-foreground">
+                  <Moon className="bigcal-size-4" />
                   <span>Closed</span>
                 </div>
               )}
@@ -127,7 +127,7 @@ export function ChangeWorkingHoursInput() {
         })}
       </div>
 
-      <Button className="mt-4 w-fit" onClick={handleSave}>
+      <Button className="bigcal-mt-4 bigcal-w-fit" onClick={handleSave}>
         Apply
       </Button>
     </div>

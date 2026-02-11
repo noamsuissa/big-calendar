@@ -9,32 +9,32 @@ import { EventDetailsDialog } from "@/calendar/components/dialogs/event-details-
 import { cn } from "@/lib/utils";
 
 const eventBadgeVariants = cva(
-  "mx-1 flex size-auto h-6.5 select-none items-center justify-between gap-1.5 truncate whitespace-nowrap rounded-md border px-2 text-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+  "bigcal-mx-1 bigcal-flex bigcal-size-auto bigcal-h-6.5 bigcal-select-none bigcal-items-center bigcal-justify-between bigcal-gap-1.5 bigcal-truncate bigcal-whitespace-nowrap bigcal-rounded-md bigcal-border bigcal-px-2 bigcal-text-xs bigcal-focus-visible:bigcal-outline-none bigcal-focus-visible:bigcal-ring-1 bigcal-focus-visible:bigcal-ring-ring",
   {
     variants: {
       color: {
         // Colored and mixed variants
-        blue: "border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-300 [&_.event-dot]:fill-blue-600",
-        green: "border-green-200 bg-green-50 text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-300 [&_.event-dot]:fill-green-600",
-        red: "border-red-200 bg-red-50 text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-300 [&_.event-dot]:fill-red-600",
-        yellow: "border-yellow-200 bg-yellow-50 text-yellow-700 dark:border-yellow-800 dark:bg-yellow-950 dark:text-yellow-300 [&_.event-dot]:fill-yellow-600",
-        purple: "border-purple-200 bg-purple-50 text-purple-700 dark:border-purple-800 dark:bg-purple-950 dark:text-purple-300 [&_.event-dot]:fill-purple-600",
-        orange: "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-800 dark:bg-orange-950 dark:text-orange-300 [&_.event-dot]:fill-orange-600",
-        gray: "border-neutral-200 bg-neutral-50 text-neutral-900 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 [&_.event-dot]:fill-neutral-600",
+        blue: "bigcal-border-blue-200 bigcal-bg-blue-50 bigcal-text-blue-700 dark:bigcal-border-blue-800 dark:bigcal-bg-blue-950 dark:bigcal-text-blue-300 [&_.bigcal-event-dot]:bigcal-fill-blue-600",
+        green: "bigcal-border-green-200 bigcal-bg-green-50 bigcal-text-green-700 dark:bigcal-border-green-800 dark:bigcal-bg-green-950 dark:bigcal-text-green-300 [&_.bigcal-event-dot]:bigcal-fill-green-600",
+        red: "bigcal-border-red-200 bigcal-bg-red-50 bigcal-text-red-700 dark:bigcal-border-red-800 dark:bigcal-bg-red-950 dark:bigcal-text-red-300 [&_.bigcal-event-dot]:bigcal-fill-red-600",
+        yellow: "bigcal-border-yellow-200 bigcal-bg-yellow-50 bigcal-text-yellow-700 dark:bigcal-border-yellow-800 dark:bigcal-bg-yellow-950 dark:bigcal-text-yellow-300 [&_.bigcal-event-dot]:bigcal-fill-yellow-600",
+        purple: "bigcal-border-purple-200 bigcal-bg-purple-50 bigcal-text-purple-700 dark:bigcal-border-purple-800 dark:bigcal-bg-purple-950 dark:bigcal-text-purple-300 [&_.bigcal-event-dot]:bigcal-fill-purple-600",
+        orange: "bigcal-border-orange-200 bigcal-bg-orange-50 bigcal-text-orange-700 dark:bigcal-border-orange-800 dark:bigcal-bg-orange-950 dark:bigcal-text-orange-300 [&_.bigcal-event-dot]:bigcal-fill-orange-600",
+        gray: "bigcal-border-neutral-200 bigcal-bg-neutral-50 bigcal-text-neutral-900 dark:bigcal-border-neutral-700 dark:bigcal-bg-neutral-900 dark:bigcal-text-neutral-300 [&_.bigcal-event-dot]:bigcal-fill-neutral-600",
 
         // Dot variants
-        "blue-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-blue-600",
-        "green-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-green-600",
-        "red-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-red-600",
-        "yellow-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-yellow-600",
-        "purple-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-purple-600",
-        "orange-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-orange-600",
-        "gray-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-neutral-600",
+        "blue-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-blue-600",
+        "green-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-green-600",
+        "red-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-red-600",
+        "yellow-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-yellow-600",
+        "purple-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-purple-600",
+        "orange-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-orange-600",
+        "gray-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-neutral-600",
       },
       multiDayPosition: {
-        first: "relative z-10 mr-0 w-[calc(100%_-_3px)] rounded-r-none border-r-0 [&>span]:mr-2.5",
-        middle: "relative z-10 mx-0 w-[calc(100%_+_1px)] rounded-none border-x-0",
-        last: "ml-0 rounded-l-none border-l-0",
+        first: "bigcal-relative bigcal-z-10 bigcal-mr-0 bigcal-w-[calc(100%_-_3px)] bigcal-rounded-r-none bigcal-border-r-0 [&>span]:bigcal-mr-2.5",
+        middle: "bigcal-relative bigcal-z-10 bigcal-mx-0 bigcal-w-[calc(100%_+_1px)] bigcal-rounded-none bigcal-border-x-0",
+        last: "bigcal-ml-0 bigcal-rounded-l-none bigcal-border-l-0",
         none: "",
       },
     },
@@ -85,17 +85,17 @@ export function MonthEventBadge({ event, cellDate, eventCurrentDay, eventTotalDa
     <DraggableEvent event={event}>
       <EventDetailsDialog event={event}>
         <div role="button" tabIndex={0} className={eventBadgeClasses} onKeyDown={handleKeyDown}>
-          <div className="flex items-center gap-1.5 truncate">
+          <div className="bigcal-flex bigcal-items-center bigcal-gap-1.5 bigcal-truncate">
             {!["middle", "last"].includes(position) && ["mixed", "dot"].includes(badgeVariant) && (
-              <svg width="8" height="8" viewBox="0 0 8 8" className="event-dot shrink-0">
+              <svg width="8" height="8" viewBox="0 0 8 8" className="bigcal-event-dot bigcal-shrink-0">
                 <circle cx="4" cy="4" r="4" />
               </svg>
             )}
 
             {renderBadgeText && (
-              <p className="flex-1 truncate font-semibold">
+              <p className="bigcal-flex-1 bigcal-truncate bigcal-font-semibold">
                 {eventCurrentDay && (
-                  <span className="text-xs">
+                  <span className="bigcal-text-xs">
                     Day {eventCurrentDay} of {eventTotalDays} •{" "}
                   </span>
                 )}

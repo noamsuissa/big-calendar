@@ -53,17 +53,17 @@ export function CalendarAgendaView({ singleDayEvents, multiDayEvents }) {
   const hasAnyEvents = singleDayEvents.length > 0 || multiDayEvents.length > 0;
 
   return (
-    <div className="h-[800px]">
-      <ScrollArea className="h-full" type="always">
-        <div className="space-y-6 p-4">
+    <div className="bigcal-h-[800px]">
+      <ScrollArea className="bigcal-h-full" type="always">
+        <div className="bigcal-space-y-6 bigcal-p-4">
           {eventsByDay.map(dayGroup => (
             <AgendaDayGroup key={format(dayGroup.date, "yyyy-MM-dd")} date={dayGroup.date} events={dayGroup.events} multiDayEvents={dayGroup.multiDayEvents} />
           ))}
 
           {!hasAnyEvents && (
-            <div className="flex flex-col items-center justify-center gap-2 py-20 text-muted-foreground">
-              <CalendarX2 className="size-10" />
-              <p className="text-sm md:text-base">No events scheduled for the selected month</p>
+            <div className="bigcal-flex bigcal-flex-col bigcal-items-center bigcal-justify-center bigcal-gap-2 bigcal-py-20 bigcal-text-muted-foreground">
+              <CalendarX2 className="bigcal-size-10" />
+              <p className="bigcal-text-sm md:bigcal-text-base">No events scheduled for the selected month</p>
             </div>
           )}
         </div>

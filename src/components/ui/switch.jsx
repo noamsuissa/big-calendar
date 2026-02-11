@@ -7,7 +7,7 @@ const Switch = React.forwardRef(
   ({ className, ...props }, ref) => (
     <SwitchPrimitives.Root
       className={cn(
-        "peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input",
+        "bigcal-peer bigcal-inline-flex bigcal-h-5 bigcal-w-9 bigcal-shrink-0 bigcal-cursor-pointer bigcal-items-center bigcal-rounded-full bigcal-border-2 bigcal-border-transparent bigcal-shadow-sm bigcal-transition-colors focus-visible:bigcal-outline-none focus-visible:bigcal-ring-2 focus-visible:bigcal-ring-ring focus-visible:bigcal-ring-offset-2 focus-visible:bigcal-ring-offset-background disabled:bigcal-cursor-not-allowed disabled:bigcal-opacity-50 data-[state=checked]:bigcal-bg-primary data-[state=unchecked]:bigcal-bg-input",
         className
       )}
       {...props}
@@ -15,7 +15,7 @@ const Switch = React.forwardRef(
     >
       <SwitchPrimitives.Thumb
         className={cn(
-          "pointer-events-none block h-4 w-4 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0"
+          "bigcal-pointer-events-none bigcal-block bigcal-h-4 bigcal-w-4 bigcal-rounded-full bigcal-bg-background bigcal-shadow-lg bigcal-ring-0 bigcal-transition-transform data-[state=checked]:bigcal-translate-x-4 data-[state=unchecked]:bigcal-translate-x-0"
         )}
       />
     </SwitchPrimitives.Root>

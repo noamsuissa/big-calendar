@@ -6,11 +6,11 @@ export function ChangeBadgeVariantInput() {
   const { badgeVariant, setBadgeVariant } = useCalendar();
 
   return (
-    <div className="space-y-2">
-      <p className="text-sm font-semibold">Change badge variant</p>
+    <div className="bigcal-space-y-2">
+      <p className="bigcal-text-sm bigcal-font-semibold">Change badge variant</p>
 
       <Select value={badgeVariant} onValueChange={setBadgeVariant}>
-        <SelectTrigger className="w-48">
+        <SelectTrigger className="bigcal-w-48">
           <SelectValue />
         </SelectTrigger>
 

@@ -24,15 +24,15 @@ function SingleDayPicker({ id, onSelect, className, placeholder, labelVariant = 
         <Button
           id={id}
           variant="outline"
-          className={cn("group relative h-9 w-full justify-start whitespace-nowrap px-3 py-2 font-normal hover:bg-inherit", className)}
+          className={cn("bigcal-group bigcal-relative bigcal-h-9 bigcal-w-full bigcal-justify-start bigcal-whitespace-nowrap bigcal-px-3 bigcal-py-2 bigcal-font-normal hover:bigcal-bg-inherit", className)}
           {...props}
         >
           {value && <span>{format(value, labelVariant)}</span>}
-          {!value && <span className="text-muted-foreground">{placeholder}</span>}
+          {!value && <span className="bigcal-text-muted-foreground">{placeholder}</span>}
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent align="center" className="w-fit p-0">
+      <PopoverContent align="center" className="bigcal-w-fit bigcal-p-0">
         <SingleCalendar mode="single" selected={value} onSelect={handleSelect} initialFocus />
       </PopoverContent>
     </Popover>

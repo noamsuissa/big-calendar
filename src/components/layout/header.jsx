@@ -5,40 +5,40 @@ import { Button } from "@/components/ui/button";
 
 export function Header() {
   return (
-    <header className="mx-auto flex h-[88px] w-full max-w-screen-2xl items-center justify-center">
-      <div className="my-3 flex h-14 w-full items-center justify-between px-8">
-        <div className="flex items-center gap-3.5">
-          <div className="flex size-12 items-center justify-center rounded-full border p-3">
-            <Calendar className="size-6 text-foreground" />
+    <header className="bigcal-mx-auto bigcal-flex bigcal-h-[88px] bigcal-w-full bigcal-max-w-screen-2xl bigcal-items-center bigcal-justify-center">
+      <div className="bigcal-my-3 bigcal-flex bigcal-h-14 bigcal-w-full bigcal-items-center bigcal-justify-between bigcal-px-8">
+        <div className="bigcal-flex bigcal-items-center bigcal-gap-3.5">
+          <div className="bigcal-flex bigcal-size-12 bigcal-items-center bigcal-justify-center bigcal-rounded-full bigcal-border bigcal-p-3">
+            <Calendar className="bigcal-size-6 bigcal-text-foreground" />
           </div>
 
-          <div className="space-y-1">
-            <p className="text-lg font-medium leading-6">Big calendar</p>
-            <p className="text-sm text-foreground">
+          <div className="bigcal-space-y-1">
+            <p className="bigcal-text-lg bigcal-font-medium bigcal-leading-6">Big calendar</p>
+            <p className="bigcal-text-sm bigcal-text-foreground">
               Built with React and Tailwind by{" "}
               <a
                 href="https://github.com/lramos33"
                 target="_blank"
-                className="inline-flex gap-0.5 text-sm underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                className="bigcal-inline-flex bigcal-gap-0.5 bigcal-text-sm bigcal-underline focus-visible:bigcal-outline-none focus-visible:bigcal-ring-1 focus-visible:bigcal-ring-ring"
               >
                 lramos33
-                <ArrowUpRight size={12} className="text-foreground" />
+                <ArrowUpRight size={12} className="bigcal-text-foreground" />
               </a>
             </p>
           </div>
         </div>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="bigcal-hidden bigcal-items-center bigcal-gap-4 md:bigcal-flex">
           <a
             href="https://github.com/lramos33/big-calendar"
             target="_blank"
-            className="inline-flex gap-0.5 text-sm hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="bigcal-inline-flex bigcal-gap-0.5 bigcal-text-sm hover:bigcal-underline focus-visible:bigcal-outline-none focus-visible:bigcal-ring-1 focus-visible:bigcal-ring-ring"
           >
             View on GitHub
-            <ArrowUpRight size={14} className="text-foreground" />
+            <ArrowUpRight size={14} className="bigcal-text-foreground" />
           </a>
 
-          <div className="flex items-center gap-2">
+          <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
             <Button size="icon" asChild variant="ghost">
               <a href="https://x.com/leoo_ramos1" target="_blank">
                 <svg

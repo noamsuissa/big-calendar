@@ -27,9 +27,9 @@ export function CalendarTimeline({ firstVisibleHour, lastVisibleHour }) {
   if (currentHour < firstVisibleHour || currentHour >= lastVisibleHour) return null;
 
   return (
-    <div className="pointer-events-none absolute inset-x-0 z-50 border-t border-primary" style={{ top: `${getCurrentTimePosition()}%` }}>
-      <div className="absolute left-0 top-0 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary"></div>
-      <div className="absolute -left-18 flex w-16 -translate-y-1/2 justify-end bg-background pr-1 text-xs font-medium text-primary">{formatCurrentTime()}</div>
+    <div className="bigcal-pointer-events-none bigcal-absolute bigcal-inset-x-0 bigcal-z-50 bigcal-border-t bigcal-border-primary" style={{ top: `${getCurrentTimePosition()}%` }}>
+      <div className="bigcal-absolute bigcal-left-0 bigcal-top-0 bigcal-size-3 bigcal--translate-x-1/2 bigcal--translate-y-1/2 bigcal-rounded-full bigcal-bg-primary"></div>
+      <div className="bigcal-absolute bigcal--left-18 bigcal-flex bigcal-w-16 bigcal--translate-y-1/2 bigcal-justify-end bigcal-bg-background bigcal-pr-1 bigcal-text-xs bigcal-font-medium bigcal-text-primary">{formatCurrentTime()}</div>
     </div>
   );
 }

@@ -41,7 +41,7 @@ export function DroppableDayCell({ cell, children }) {
   );
 
   return (
-    <div ref={drop} className={cn(isOver && canDrop && "bg-accent/50")}>
+    <div ref={drop} className={cn(isOver && canDrop && "bigcal-bg-accent/50")}>
       {children}
     </div>
   );

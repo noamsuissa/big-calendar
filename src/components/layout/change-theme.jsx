@@ -20,7 +20,7 @@ export function ToggleTheme() {
     setCurrentTheme(newTheme);
   };
 
-  if (!currentTheme) return <Skeleton className="size-9" />;
+  if (!currentTheme) return <Skeleton className="bigcal-size-9" />;
 
   return (
     <Button variant="ghost" size="icon" onClick={toggleTheme}>

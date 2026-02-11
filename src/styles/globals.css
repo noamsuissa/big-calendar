@@ -156,9 +156,9 @@ body {
 
 @layer base {
   * {
-    @apply border-border;
+    @apply bigcal-border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bigcal-bg-background bigcal-text-foreground;
   }
 }

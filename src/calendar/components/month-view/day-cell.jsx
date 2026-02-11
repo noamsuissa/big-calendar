@@ -26,29 +26,29 @@ export function DayCell({ cell, events, eventPositions }) {
 
   return (
     <DroppableDayCell cell={cell}>
-      <div className={cn("flex h-full flex-col gap-1 border-l border-t py-1.5 lg:pb-2 lg:pt-1", isSunday && "border-l-0")}>
+      <div className={cn("bigcal-flex bigcal-h-full bigcal-flex-col bigcal-gap-1 bigcal-border-l bigcal-border-t bigcal-py-1.5 lg:bigcal-pb-2 lg:bigcal-pt-1", isSunday && "bigcal-border-l-0")}>
         <button
           onClick={handleClick}
           className={cn(
-            "flex size-6 translate-x-1 items-center justify-center rounded-full text-xs font-semibold hover:bg-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring lg:px-2",
-            !currentMonth && "opacity-20",
-            isToday(date) && "bg-primary font-bold text-primary-foreground hover:bg-primary"
+            "bigcal-flex bigcal-size-6 bigcal-translate-x-1 bigcal-items-center bigcal-justify-center bigcal-rounded-full bigcal-text-xs bigcal-font-semibold hover:bigcal-bg-accent focus-visible:bigcal-outline-none focus-visible:bigcal-ring-1 focus-visible:bigcal-ring-ring lg:bigcal-px-2",
+            !currentMonth && "bigcal-opacity-20",
+            isToday(date) && "bigcal-bg-primary bigcal-font-bold bigcal-text-primary-foreground bigcal-hover:bg-primary"
           )}
         >
           {day}
         </button>
 
-        <div className={cn("flex h-6 gap-1 px-2 lg:h-[94px] lg:flex-col lg:gap-2 lg:px-0", !currentMonth && "opacity-50")}>
+        <div className={cn("bigcal-flex bigcal-h-6 bigcal-gap-1 bigcal-px-2 lg:bigcal-h-[94px] lg:bigcal-flex-col lg:bigcal-gap-2 lg:bigcal-px-0", !currentMonth && "bigcal-opacity-50")}>
           {[0, 1, 2].map(position => {
             const event = cellEvents.find(e => e.position === position);
             const eventKey = event ? `event-${event.id}-${position}` : `empty-${position}`;
 
             return (
-              <div key={eventKey} className="lg:flex-1">
+              <div key={eventKey} className="lg:bigcal-flex-1">
                 {event && (
                   <>
-                    <EventBullet className="lg:hidden" color={event.color} />
-                    <MonthEventBadge className="hidden lg:flex" event={event} cellDate={startOfDay(date)} />
+                    <EventBullet className="lg:bigcal-hidden" color={event.color} />
+                    <MonthEventBadge className="bigcal-hidden lg:bigcal-flex" event={event} cellDate={startOfDay(date)} />
                   </>
                 )}
               </div>
@@ -57,9 +57,9 @@ export function DayCell({ cell, events, eventPositions }) {
         </div>
 
         {cellEvents.length > MAX_VISIBLE_EVENTS && (
-          <p className={cn("h-4.5 px-1.5 text-xs font-semibold text-muted-foreground", !currentMonth && "opacity-50")}>
-            <span className="sm:hidden">+{cellEvents.length - MAX_VISIBLE_EVENTS}</span>
-            <span className="hidden sm:inline"> {cellEvents.length - MAX_VISIBLE_EVENTS} more...</span>
+          <p className={cn("bigcal-h-4.5 bigcal-px-1.5 bigcal-text-xs bigcal-font-semibold bigcal-text-muted-foreground", !currentMonth && "bigcal-opacity-50")}>
+            <span className="lg:bigcal-hidden">+{cellEvents.length - MAX_VISIBLE_EVENTS}</span>
+            <span className="lg:bigcal-hidden lg:bigcal-inline"> {cellEvents.length - MAX_VISIBLE_EVENTS} more...</span>
           </p>
         )}
       </div>

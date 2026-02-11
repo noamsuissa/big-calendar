@@ -19,36 +19,36 @@ export function EventDetailsDialog({ event, children }) {
             <DialogTitle>{event.title}</DialogTitle>
           </DialogHeader>
 
-          <div className="space-y-4">
-            <div className="flex items-start gap-2">
-              <User className="mt-1 size-4 shrink-0" />
+          <div className="bigcal-space-y-4">
+            <div className="bigcal-flex bigcal-items-start bigcal-gap-2">
+              <User className="bigcal-mt-1 bigcal-size-4 bigcal-shrink-0" />
               <div>
-                <p className="text-sm font-medium">Responsible</p>
-                <p className="text-sm text-muted-foreground">{event.user.name}</p>
+                <p className="bigcal-text-sm bigcal-font-medium">Responsible</p>
+                <p className="bigcal-text-sm bigcal-text-muted-foreground">{event.user.name}</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-2">
-              <Calendar className="mt-1 size-4 shrink-0" />
+            <div className="bigcal-flex bigcal-items-start bigcal-gap-2">
+              <Calendar className="bigcal-mt-1 bigcal-size-4 bigcal-shrink-0" />
               <div>
-                <p className="text-sm font-medium">Start Date</p>
-                <p className="text-sm text-muted-foreground">{format(startDate, "MMM d, yyyy h:mm a")}</p>
+                <p className="bigcal-text-sm bigcal-font-medium">Start Date</p>
+                <p className="bigcal-text-sm bigcal-text-muted-foreground">{format(startDate, "MMM d, yyyy h:mm a")}</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-2">
-              <Clock className="mt-1 size-4 shrink-0" />
+            <div className="bigcal-flex bigcal-items-start bigcal-gap-2">
+              <Clock className="bigcal-mt-1 bigcal-size-4 bigcal-shrink-0" />
               <div>
-                <p className="text-sm font-medium">End Date</p>
-                <p className="text-sm text-muted-foreground">{format(endDate, "MMM d, yyyy h:mm a")}</p>
+                <p className="bigcal-text-sm bigcal-font-medium">End Date</p>
+                <p className="bigcal-text-sm bigcal-text-muted-foreground">{format(endDate, "MMM d, yyyy h:mm a")}</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-2">
-              <Text className="mt-1 size-4 shrink-0" />
+            <div className="bigcal-flex bigcal-items-start bigcal-gap-2">
+              <Text className="bigcal-mt-1 bigcal-size-4 bigcal-shrink-0" />
               <div>
-                <p className="text-sm font-medium">Description</p>
-                <p className="text-sm text-muted-foreground">{event.description}</p>
+                <p className="bigcal-text-sm bigcal-font-medium">Description</p>
+                <p className="bigcal-text-sm bigcal-text-muted-foreground">{event.description}</p>
               </div>
             </div>
           </div>

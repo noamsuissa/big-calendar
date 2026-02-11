@@ -15,14 +15,14 @@ const SelectTrigger = React.forwardRef(
     <SelectPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[placeholder]:text-muted-foreground [&>span]:line-clamp-1",
+        "bigcal-flex bigcal-h-9 bigcal-w-full bigcal-items-center bigcal-justify-between bigcal-whitespace-nowrap bigcal-rounded-md bigcal-border bigcal-border-input bigcal-bg-transparent bigcal-px-3 bigcal-py-2 bigcal-text-sm bigcal-shadow-sm bigcal-ring-offset-background focus:bigcal-outline-none focus:bigcal-ring-1 focus:bigcal-ring-ring disabled:bigcal-cursor-not-allowed disabled:bigcal-opacity-50 data-[placeholder]:bigcal-text-muted-foreground [&>span]:bigcal-line-clamp-1",
         className
       )}
       {...props}
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <ChevronDown className="size-4 opacity-50" />
+        <ChevronDown className="bigcal-size-4 bigcal-opacity-50" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   )
@@ -31,8 +31,8 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectScrollUpButton = React.forwardRef(
   ({ className, ...props }, ref) => (
-    <SelectPrimitive.ScrollUpButton ref={ref} className={cn("flex cursor-default items-center justify-center py-1", className)} {...props}>
-      <ChevronUp className="size-4" />
+    <SelectPrimitive.ScrollUpButton ref={ref} className={cn("bigcal-flex bigcal-cursor-default bigcal-items-center bigcal-justify-center bigcal-py-1", className)} {...props}>
+      <ChevronUp className="bigcal-size-4" />
     </SelectPrimitive.ScrollUpButton>
   )
 );
@@ -40,8 +40,8 @@ SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName;
 
 const SelectScrollDownButton = React.forwardRef(
   ({ className, ...props }, ref) => (
-    <SelectPrimitive.ScrollDownButton ref={ref} className={cn("flex cursor-default items-center justify-center py-1", className)} {...props}>
-      <ChevronDown className="size-4" />
+    <SelectPrimitive.ScrollDownButton ref={ref} className={cn("bigcal-flex bigcal-cursor-default bigcal-items-center bigcal-justify-center bigcal-py-1", className)} {...props}>
+      <ChevronDown className="bigcal-size-4" />
     </SelectPrimitive.ScrollDownButton>
   )
 );
@@ -53,9 +53,9 @@ const SelectContent = React.forwardRef(
       <SelectPrimitive.Content
         ref={ref}
         className={cn(
-          "relative z-50 max-h-[--radix-select-content-available-height] min-w-[8rem] origin-[--radix-select-content-transform-origin] overflow-y-auto overflow-x-hidden rounded-md border bg-popover text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          "bigcal-relative bigcal-z-50 bigcal-max-h-[--radix-select-content-available-height] bigcal-min-w-[8rem] bigcal-origin-[--radix-select-content-transform-origin] bigcal-overflow-y-auto bigcal-overflow-x-hidden bigcal-rounded-md bigcal-border bigcal-bg-popover bigcal-text-popover-foreground bigcal-shadow-md data-[state=open]:bigcal-animate-in data-[state=closed]:bigcal-animate-out data-[state=closed]:bigcal-fade-out-0 data-[state=open]:bigcal-fade-in-0 data-[state=closed]:bigcal-zoom-out-95 data-[state=open]:bigcal-zoom-in-95 data-[side=bottom]:bigcal-slide-in-from-top-2 data-[side=left]:bigcal-slide-in-from-right-2 data-[side=right]:bigcal-slide-in-from-left-2 data-[side=top]:bigcal-slide-in-from-bottom-2",
           position === "popper" &&
-            "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
+            "data-[side=bottom]:bigcal-translate-y-1 data-[side=left]:bigcal--translate-x-1 data-[side=right]:bigcal-translate-x-1 data-[side=top]:bigcal--translate-y-1",
           className
         )}
         position={position}
@@ -63,7 +63,7 @@ const SelectContent = React.forwardRef(
       >
         <SelectScrollUpButton />
         <SelectPrimitive.Viewport
-          className={cn("p-1", position === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]")}
+          className={cn("bigcal-p-1", position === "popper" && "bigcal-h-[var(--radix-select-trigger-height)] bigcal-w-full bigcal-min-w-[var(--radix-select-trigger-width)]")}
         >
           {children}
         </SelectPrimitive.Viewport>
@@ -75,7 +75,7 @@ const SelectContent = React.forwardRef(
 SelectContent.displayName = SelectPrimitive.Content.displayName;
 
 const SelectLabel = React.forwardRef(
-  ({ className, ...props }, ref) => <SelectPrimitive.Label ref={ref} className={cn("px-2 py-1.5 text-sm font-semibold", className)} {...props} />
+  ({ className, ...props }, ref) => <SelectPrimitive.Label ref={ref} className={cn("bigcal-px-2 bigcal-py-1.5 bigcal-text-sm bigcal-font-semibold", className)} {...props} />
 );
 SelectLabel.displayName = SelectPrimitive.Label.displayName;
 
@@ -84,14 +84,14 @@ const SelectItem = React.forwardRef(
     <SelectPrimitive.Item
       ref={ref}
       className={cn(
-        "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "bigcal-relative bigcal-flex bigcal-w-full bigcal-cursor-default bigcal-select-none bigcal-items-center bigcal-rounded-sm bigcal-py-1.5 bigcal-pl-2 bigcal-pr-8 bigcal-text-sm bigcal-outline-none focus:bigcal-bg-accent focus:bigcal-text-accent-foreground data-[disabled]:bigcal-pointer-events-none data-[disabled]:bigcal-opacity-50",
         className
       )}
       {...props}
     >
-      <span className="absolute right-2 flex size-3.5 items-center justify-center">
+      <span className="bigcal-absolute bigcal-right-2 bigcal-flex bigcal-size-3.5 bigcal-items-center bigcal-justify-center">
         <SelectPrimitive.ItemIndicator>
-          <Check className="size-4" />
+          <Check className="bigcal-size-4" />
         </SelectPrimitive.ItemIndicator>
       </span>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -101,7 +101,7 @@ const SelectItem = React.forwardRef(
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 
 const SelectSeparator = React.forwardRef(
-  ({ className, ...props }, ref) => <SelectPrimitive.Separator ref={ref} className={cn("-mx-1 my-1 h-px bg-muted", className)} {...props} />
+  ({ className, ...props }, ref) => <SelectPrimitive.Separator ref={ref} className={cn("bigcal--mx-1 bigcal-my-1 bigcal-h-px bigcal-bg-muted", className)} {...props} />
 );
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 

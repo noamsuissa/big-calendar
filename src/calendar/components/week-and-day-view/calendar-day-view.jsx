@@ -34,66 +34,70 @@ export function CalendarDayView({ singleDayEvents, multiDayEvents }) {
   const groupedEvents = groupEvents(dayEvents);
 
   return (
-    <div className="flex">
-      <div className="flex flex-1 flex-col">
+    <div className="bigcal-flex">
+      <div className="bigcal-flex bigcal-flex-1 bigcal-flex-col">
         <div>
           <DayViewMultiDayEventsRow selectedDate={selectedDate} multiDayEvents={multiDayEvents} />
 
           {/* Day header */}
-          <div className="relative z-20 flex border-b">
-            <div className="w-18"></div>
-            <span className="flex-1 border-l py-2 text-center text-xs font-medium text-muted-foreground">
-              {format(selectedDate, "EE")} <span className="font-semibold text-foreground">{format(selectedDate, "d")}</span>
+          <div className="bigcal-relative bigcal-z-20 bigcal-flex bigcal-border-b">
+            <div className="bigcal-w-18"></div>
+            <span className="bigcal-flex-1 bigcal-border-l bigcal-py-2 bigcal-text-center bigcal-text-xs bigcal-font-medium bigcal-text-muted-foreground">
+              {format(selectedDate, "EE")} <span className="bigcal-font-semibold bigcal-text-foreground">{format(selectedDate, "d")}</span>
             </span>
           </div>
         </div>
 
-        <ScrollArea className="h-[800px]" type="always">
-          <div className="flex">
+        <ScrollArea className="bigcal-h-[800px]" type="always">
+          <div className="bigcal-flex">
             {/* Hours column */}
-            <div className="relative w-18">
+            <div className="bigcal-relative bigcal-w-18">
               {hours.map((hour, index) => (
-                <div key={hour} className="relative" style={{ height: "96px" }}>
-                  <div className="absolute -top-3 right-2 flex h-6 items-center">
-                    {index !== 0 && <span className="text-xs text-muted-foreground">{format(new Date().setHours(hour, 0, 0, 0), "hh a")}</span>}
+                <div key={hour} className="bigcal-relative" style={{ height: "96px" }}>
+                  <div className="bigcal-absolute bigcal--top-3 bigcal-right-2 bigcal-flex bigcal-h-6 bigcal-items-center">
+                    {index !== 0 && <span className="bigcal-text-xs bigcal-text-muted-foreground">{format(new Date().setHours(hour, 0, 0, 0), "hh a")}</span>}
                   </div>
                 </div>
               ))}
             </div>
 
             {/* Day grid */}
-            <div className="relative flex-1 border-l">
-              <div className="relative">
+            <div className="bigcal-relative bigcal-flex-1 bigcal-border-l">
+              <div className="bigcal-relative">
                 {hours.map((hour, index) => {
                   const isDisabled = !isWorkingHour(selectedDate, hour, workingHours);
 
                   return (
-                    <div key={hour} className={cn("relative", isDisabled && "bg-calendar-disabled-hour")} style={{ height: "96px" }}>
-                      {index !== 0 && <div className="pointer-events-none absolute inset-x-0 top-0 border-b"></div>}
+                    <div 
+                      key={hour} 
+                      className={cn("bigcal-relative", isDisabled && "bigcal-bg-calendar-disabled-hour")} 
+                      style={{ height: "96px" }}
+                    >
+                      {index !== 0 && <div className="bigcal-pointer-events-none bigcal-absolute bigcal-inset-x-0 bigcal-top-0 bigcal-border-b"></div>}
 
                       <DroppableTimeBlock date={selectedDate} hour={hour} minute={0}>
                         <AddEventDialog startDate={selectedDate} startTime={{ hour, minute: 0 }}>
-                          <div className="absolute inset-x-0 top-0 h-[24px] cursor-pointer transition-colors hover:bg-accent" />
+                          <div className="bigcal-absolute bigcal-inset-x-0 bigcal-top-0 bigcal-h-[24px] bigcal-cursor-pointer bigcal-transition-colors bigcal-hover:bigcal-bg-accent" />
                         </AddEventDialog>
                       </DroppableTimeBlock>
 
                       <DroppableTimeBlock date={selectedDate} hour={hour} minute={15}>
                         <AddEventDialog startDate={selectedDate} startTime={{ hour, minute: 15 }}>
-                          <div className="absolute inset-x-0 top-[24px] h-[24px] cursor-pointer transition-colors hover:bg-accent" />
+                          <div className="bigcal-absolute bigcal-inset-x-0 bigcal-top-[24px] bigcal-h-[24px] bigcal-cursor-pointer bigcal-transition-colors bigcal-hover:bigcal-bg-accent" />
                         </AddEventDialog>
                       </DroppableTimeBlock>
 
-                      <div className="pointer-events-none absolute inset-x-0 top-1/2 border-b border-dashed"></div>
+                      <div className="bigcal-pointer-events-none bigcal-absolute bigcal-inset-x-0 bigcal-top-1/2 bigcal-border-b bigcal-border-dashed"></div>
 
                       <DroppableTimeBlock date={selectedDate} hour={hour} minute={30}>
                         <AddEventDialog startDate={selectedDate} startTime={{ hour, minute: 30 }}>
-                          <div className="absolute inset-x-0 top-[48px] h-[24px] cursor-pointer transition-colors hover:bg-accent" />
+                          <div className="bigcal-absolute bigcal-inset-x-0 bigcal-top-[48px] bigcal-h-[24px] bigcal-cursor-pointer bigcal-transition-colors bigcal-hover:bigcal-bg-accent" />
                         </AddEventDialog>
                       </DroppableTimeBlock>
 
                       <DroppableTimeBlock date={selectedDate} hour={hour} minute={45}>
                         <AddEventDialog startDate={selectedDate} startTime={{ hour, minute: 45 }}>
-                          <div className="absolute inset-x-0 top-[72px] h-[24px] cursor-pointer transition-colors hover:bg-accent" />
+                          <div className="bigcal-absolute bigcal-inset-x-0 bigcal-top-[72px] bigcal-h-[24px] bigcal-cursor-pointer bigcal-transition-colors bigcal-hover:bigcal-bg-accent" />
                         </AddEventDialog>
                       </DroppableTimeBlock>
                     </div>
@@ -117,7 +121,7 @@ export function CalendarDayView({ singleDayEvents, multiDayEvents }) {
                     if (!hasOverlap) style = { ...style, width: "100%", left: "0%" };
 
                     return (
-                      <div key={event.id} className="absolute p-1" style={style}>
+                      <div key={event.id} className="bigcal-absolute bigcal-p-1" style={style}>
                         <EventBlock event={event} />
                       </div>
                     );
@@ -131,48 +135,48 @@ export function CalendarDayView({ singleDayEvents, multiDayEvents }) {
         </ScrollArea>
       </div>
 
-      <div className="hidden w-64 divide-y border-l md:block">
-        <SingleCalendar className="mx-auto w-fit" mode="single" selected={selectedDate} onSelect={setSelectedDate} initialFocus />
+      <div className="bigcal-hidden bigcal-w-64 bigcal-divide-y bigcal-border-l md:bigcal-block">
+        <SingleCalendar className="bigcal-mx-auto bigcal-w-fit" mode="single" selected={selectedDate} onSelect={setSelectedDate} initialFocus />
 
-        <div className="flex-1 space-y-3">
+        <div className="bigcal-flex-1 bigcal-space-y-3">
           {currentEvents.length > 0 ? (
-            <div className="flex items-start gap-2 px-4 pt-4">
-              <span className="relative mt-[5px] flex size-2.5">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex size-2.5 rounded-full bg-green-600"></span>
+            <div className="bigcal-flex bigcal-items-start bigcal-gap-2 bigcal-px-4 bigcal-pt-4">
+              <span className="bigcal-relative bigcal-mt-[5px] bigcal-flex bigcal-size-2.5">
+                <span className="bigcal-absolute bigcal-inline-flex bigcal-size-full bigcal-animate-ping bigcal-rounded-full bigcal-bg-green-400 bigcal-opacity-75"></span>
+                <span className="bigcal-relative bigcal-inline-flex bigcal-size-2.5 bigcal-rounded-full bigcal-bg-green-600"></span>
               </span>
 
-              <p className="text-sm font-semibold text-foreground">Happening now</p>
+              <p className="bigcal-text-sm bigcal-font-semibold bigcal-text-foreground">Happening now</p>
             </div>
           ) : (
-            <p className="p-4 text-center text-sm italic text-muted-foreground">No appointments or consultations at the moment</p>
+            <p className="bigcal-p-4 bigcal-text-center bigcal-text-sm bigcal-italic bigcal-text-muted-foreground">No appointments or consultations at the moment</p>
           )}
 
           {currentEvents.length > 0 && (
-            <ScrollArea className="h-[422px] px-4" type="always">
-              <div className="space-y-6 pb-4">
+            <ScrollArea className="bigcal-h-[422px] bigcal-px-4" type="always">
+              <div className="bigcal-space-y-6 bigcal-pb-4">
                 {currentEvents.map(event => {
                   const user = users.find(user => user.id === event.user.id);
 
                   return (
-                    <div key={event.id} className="space-y-1.5">
-                      <p className="line-clamp-2 text-sm font-semibold">{event.title}</p>
+                    <div key={event.id} className="bigcal-space-y-1.5">
+                      <p className="bigcal-line-clamp-2 bigcal-text-sm bigcal-font-semibold">{event.title}</p>
 
                       {user && (
-                        <div className="flex items-center gap-1.5 text-muted-foreground">
-                          <User className="size-3.5" />
-                          <span className="text-sm">{user.name}</span>
+                        <div className="bigcal-flex bigcal-items-center bigcal-gap-1.5 bigcal-text-muted-foreground">
+                          <User className="bigcal-size-3.5" />
+                          <span className="bigcal-text-sm">{user.name}</span>
                         </div>
                       )}
 
-                      <div className="flex items-center gap-1.5 text-muted-foreground">
-                        <Calendar className="size-3.5" />
-                        <span className="text-sm">{format(new Date(), "MMM d, yyyy")}</span>
+                      <div className="bigcal-flex bigcal-items-center bigcal-gap-1.5 bigcal-text-muted-foreground">
+                        <Calendar className="bigcal-size-3.5" />
+                        <span className="bigcal-text-sm">{format(new Date(), "MMM d, yyyy")}</span>
                       </div>
 
-                      <div className="flex items-center gap-1.5 text-muted-foreground">
-                        <Clock className="size-3.5" />
-                        <span className="text-sm">
+                      <div className="bigcal-flex bigcal-items-center bigcal-gap-1.5 bigcal-text-muted-foreground">
+                        <Clock className="bigcal-size-3.5" />
+                        <span className="bigcal-text-sm">
                           {format(parseISO(event.startDate), "h:mm a")} - {format(parseISO(event.endDate), "h:mm a")}
                         </span>
                       </div>

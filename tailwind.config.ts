@@ -4,6 +4,7 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: ["./src/**/*.{jsx,tsx}"],
+  prefix: "bigcal-",
   darkMode: "class",
   theme: {
     extend: {

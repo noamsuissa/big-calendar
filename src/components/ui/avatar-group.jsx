@@ -12,14 +12,14 @@ const AvatarGroup = forwardRef(({ className, children, max = 1, spacing = 10, ..
       <>
         {avatarItems.slice(0, max).map((child, index) => {
           return cloneElement(child, {
-            className: cn(child.props.className, "border-2 border-background"),
+            className: cn(child.props.className, "bigcal-border-2 bigcal-border-background"),
             style: { marginLeft: index === 0 ? 0 : -spacing, ...child.props.style },
           });
         })}
 
         {avatarItems.length > max && (
           <div
-            className={cn("relative flex items-center justify-center rounded-full border-2 border-background bg-muted", avatarItems[0].props.className)}
+            className={cn("relative bigcal-flex bigcal-items-center bigcal-justify-center bigcal-rounded-full bigcal-border-2 bigcal-border-background bigcal-bg-muted", avatarItems[0].props.className)}
             style={{ marginLeft: -spacing }}
           >
             <p>+{avatarItems.length - max}</p>
@@ -30,7 +30,7 @@ const AvatarGroup = forwardRef(({ className, children, max = 1, spacing = 10, ..
   }, [avatarItems, max, spacing]);
 
   return (
-    <div ref={ref} className={cn("relative flex", className)} {...props}>
+    <div ref={ref} className={cn("relative bigcal-flex", className)} {...props}>
       {renderContent}
     </div>
   );

@@ -27,27 +27,27 @@ export function YearViewMonth({ month, events }) {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="bigcal-flex bigcal-flex-col">
       <button
         type="button"
         onClick={handleClick}
-        className="w-full rounded-t-lg border px-3 py-2 text-sm font-semibold hover:bg-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+        className="bigcal-w-full bigcal-rounded-t-lg bigcal-border bigcal-px-3 bigcal-py-2 bigcal-text-sm bigcal-font-semibold bigcal-hover:bg-accent bigcal-focus-visible:outline-none bigcal-focus-visible:ring-1 bigcal-focus-visible:ring-ring"
       >
         {monthName}
       </button>
 
-      <div className="flex-1 space-y-2 rounded-b-lg border border-t-0 p-3">
-        <div className="grid grid-cols-7 gap-x-0.5 text-center">
+      <div className="bigcal-flex-1 bigcal-space-y-2 bigcal-rounded-b-lg bigcal-border bigcal-border-t-0 bigcal-p-3">
+        <div className="bigcal-grid bigcal-grid-cols-7 bigcal-gap-x-0.5 bigcal-text-center">
           {weekDays.map((day, index) => (
-            <div key={index} className="text-xs font-medium text-muted-foreground">
+            <div key={index} className="bigcal-text-xs bigcal-font-medium bigcal-text-muted-foreground">
               {day}
             </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-7 gap-x-0.5 gap-y-2">
+        <div className="bigcal-grid bigcal-grid-cols-7 bigcal-gap-x-0.5 bigcal-gap-y-2">
           {daysInMonth.map((day, index) => {
-            if (day === null) return <div key={`blank-${index}`} className="h-10" />;
+            if (day === null) return <div key={`blank-${index}`} className="bigcal-h-10" />;
 
             const date = new Date(month.getFullYear(), month.getMonth(), day);
             const dayEvents = events.filter(event => isSameDay(parseISO(event.startDate), date) || isSameDay(parseISO(event.endDate), date));

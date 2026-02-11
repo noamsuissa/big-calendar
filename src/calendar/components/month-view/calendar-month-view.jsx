@@ -22,15 +22,15 @@ export function CalendarMonthView({ singleDayEvents, multiDayEvents }) {
 
   return (
     <div>
-      <div className="grid grid-cols-7 divide-x">
+      <div className="bigcal-grid bigcal-grid-cols-7 bigcal-divide-x">
         {WEEK_DAYS.map(day => (
-          <div key={day} className="flex items-center justify-center py-2">
-            <span className="text-xs font-medium text-muted-foreground">{day}</span>
+          <div key={day} className="bigcal-flex bigcal-items-center bigcal-justify-center bigcal-py-2">
+            <span className="bigcal-text-xs bigcal-font-medium bigcal-text-muted-foreground">{day}</span>
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-7 overflow-hidden">
+      <div className="bigcal-grid bigcal-grid-cols-7 bigcal-overflow-hidden">
         {cells.map(cell => (
           <DayCell key={cell.date.toISOString()} cell={cell} events={allEvents} eventPositions={eventPositions} />
         ))}

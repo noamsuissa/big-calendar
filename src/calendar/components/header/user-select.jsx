@@ -9,18 +9,18 @@ export function UserSelect() {
 
   return (
     <Select value={selectedUserId} onValueChange={setSelectedUserId}>
-      <SelectTrigger className="flex-1 md:w-48">
+      <SelectTrigger className="bigcal-flex-1 md:bigcal-w-48">
         <SelectValue />
       </SelectTrigger>
 
       <SelectContent align="end">
         <SelectItem value="all">
-          <div className="flex items-center gap-1">
+          <div className="bigcal-flex bigcal-items-center bigcal-gap-1">
             <AvatarGroup max={2}>
               {users.map(user => (
-                <Avatar key={user.id} className="size-6 text-xxs">
+                <Avatar key={user.id} className="bigcal-size-6 bigcal-text-xxs">
                   <AvatarImage src={user.picturePath ?? undefined} alt={user.name} />
-                  <AvatarFallback className="text-xxs">{user.name[0]}</AvatarFallback>
+                  <AvatarFallback className="bigcal-text-xxs">{user.name[0]}</AvatarFallback>
                 </Avatar>
               ))}
             </AvatarGroup>
@@ -29,14 +29,14 @@ export function UserSelect() {
         </SelectItem>
 
         {users.map(user => (
-          <SelectItem key={user.id} value={user.id} className="flex-1">
-            <div className="flex items-center gap-2">
-              <Avatar key={user.id} className="size-6">
+          <SelectItem key={user.id} value={user.id} className="bigcal-flex-1">
+            <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+              <Avatar key={user.id} className="bigcal-size-6">
                 <AvatarImage src={user.picturePath ?? undefined} alt={user.name} />
-                <AvatarFallback className="text-xxs">{user.name[0]}</AvatarFallback>
+                <AvatarFallback className="bigcal-text-xxs">{user.name[0]}</AvatarFallback>
               </Avatar>
 
-              <p className="truncate">{user.name}</p>
+              <p className="bigcal-truncate">{user.name}</p>
             </div>
           </SelectItem>
         ))}

@@ -2,16 +2,16 @@ import { cva } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-const eventBulletVariants = cva("size-2 rounded-full", {
+const eventBulletVariants = cva("bigcal-size-2 bigcal-rounded-full", {
   variants: {
     color: {
-      blue: "bg-blue-600 dark:bg-blue-500",
-      green: "bg-green-600 dark:bg-green-500",
-      red: "bg-red-600 dark:bg-red-500",
-      yellow: "bg-yellow-600 dark:bg-yellow-500",
-      purple: "bg-purple-600 dark:bg-purple-500",
-      gray: "bg-neutral-600 dark:bg-neutral-500",
-      orange: "bg-orange-600 dark:bg-orange-500",
+      blue: "bigcal-bg-blue-600 dark:bigcal-bg-blue-500",
+      green: "bigcal-bg-green-600 dark:bigcal-bg-green-500",
+      red: "bigcal-bg-red-600 dark:bigcal-bg-red-500",
+      yellow: "bigcal-bg-yellow-600 dark:bigcal-bg-yellow-500",
+      purple: "bigcal-bg-purple-600 dark:bigcal-bg-purple-500",
+      gray: "bigcal-bg-neutral-600 dark:bigcal-bg-neutral-500",
+      orange: "bigcal-bg-orange-600 dark:bigcal-bg-orange-500",
     },
   },
   defaultVariants: {

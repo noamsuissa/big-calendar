@@ -18,32 +18,32 @@ export function YearViewDayCell({ day, date, events }) {
     <button
       onClick={handleClick}
       type="button"
-      className="flex h-11 flex-1 flex-col items-center justify-start gap-0.5 rounded-md pt-1 hover:bg-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+      className="bigcal-flex bigcal-h-11 bigcal-flex-1 bigcal-flex-col bigcal-items-center bigcal-justify-start bigcal-gap-0.5 bigcal-rounded-md bigcal-pt-1 bigcal-hover:bg-accent bigcal-focus-visible:bigcal-outline-none bigcal-focus-visible:bigcal-ring-1 bigcal-focus-visible:bigcal-ring-ring"
     >
       <div
         className={cn(
-          "flex size-6 items-center justify-center rounded-full text-xs font-medium",
-          isToday(date) && "bg-primary font-semibold text-primary-foreground"
+          "bigcal-flex bigcal-size-6 bigcal-items-center bigcal-justify-center bigcal-rounded-full bigcal-text-xs bigcal-font-medium",
+          isToday(date) && "bigcal-bg-primary bigcal-font-semibold bigcal-text-primary-foreground"
         )}
       >
         {day}
       </div>
 
       {eventCount > 0 && (
-        <div className="mt-0.5 flex gap-0.5">
+        <div className="bigcal-mt-0.5 bigcal-flex bigcal-gap-0.5">
           {eventCount <= maxIndicators ? (
             events.map(event => (
               <div
                 key={event.id}
                 className={cn(
-                  "size-1.5 rounded-full",
-                  event.color === "blue" && "bg-blue-600",
-                  event.color === "green" && "bg-green-600",
-                  event.color === "red" && "bg-red-600",
-                  event.color === "yellow" && "bg-yellow-600",
-                  event.color === "purple" && "bg-purple-600",
-                  event.color === "orange" && "bg-orange-600",
-                  event.color === "gray" && "bg-neutral-600"
+                  "bigcal-size-1.5 bigcal-rounded-full",
+                  event.color === "blue" && "bigcal-bg-blue-600",
+                  event.color === "green" && "bigcal-bg-green-600",
+                  event.color === "red" && "bigcal-bg-red-600",
+                  event.color === "yellow" && "bigcal-bg-yellow-600",
+                  event.color === "purple" && "bigcal-bg-purple-600",
+                  event.color === "orange" && "bigcal-bg-orange-600",
+                  event.color === "gray" && "bigcal-bg-neutral-600"
                 )}
               />
             ))
@@ -51,16 +51,16 @@ export function YearViewDayCell({ day, date, events }) {
             <>
               <div
                 className={cn(
-                  "size-1.5 rounded-full",
-                  events[0].color === "blue" && "bg-blue-600",
-                  events[0].color === "green" && "bg-green-600",
-                  events[0].color === "red" && "bg-red-600",
-                  events[0].color === "yellow" && "bg-yellow-600",
-                  events[0].color === "purple" && "bg-purple-600",
-                  events[0].color === "orange" && "bg-orange-600"
+                  "bigcal-size-1.5 bigcal-rounded-full",
+                  events[0].color === "blue" && "bigcal-bg-blue-600",
+                  events[0].color === "green" && "bigcal-bg-green-600",
+                  events[0].color === "red" && "bigcal-bg-red-600",
+                  events[0].color === "yellow" && "bigcal-bg-yellow-600",
+                  events[0].color === "purple" && "bigcal-bg-purple-600",
+                  events[0].color === "orange" && "bigcal-bg-orange-600"
                 )}
               />
-              <span className="text-[7px] text-muted-foreground">+{eventCount - 1}</span>
+              <span className="bigcal-text-[7px] bigcal-text-muted-foreground">+{eventCount - 1}</span>
             </>
           )}
         </div>

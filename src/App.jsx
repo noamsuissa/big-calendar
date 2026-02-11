@@ -105,10 +105,10 @@ function App() {
       onEventUpdate={handleEventUpdate}
       onEventDelete={handleEventDelete}
     >
-      <div className="min-h-screen bg-background">
+      <div className="bigcal-min-h-screen bigcal-bg-background">
         <Header />
         
-        <main className="mx-auto flex max-w-screen-2xl flex-col gap-4 p-4">
+        <main className="bigcal-mx-auto bigcal-flex bigcal-max-w-screen-2xl bigcal-flex-col bigcal-gap-4 bigcal-p-4">
           {/* Example: Hide header or customize it */}
           <ClientContainer 
             view={view} 
@@ -124,8 +124,8 @@ function App() {
             }}
           />
           
-          <div className="w-full">
-            <Accordion type="multiple" defaultValue={['badge-variant']} className="w-full">
+          <div className="bigcal-w-full">
+            <Accordion type="multiple" defaultValue={['badge-variant']} className="bigcal-w-full">
               <AccordionItem value="badge-variant">
                 <AccordionTrigger>Badge Variant</AccordionTrigger>
                 <AccordionContent>

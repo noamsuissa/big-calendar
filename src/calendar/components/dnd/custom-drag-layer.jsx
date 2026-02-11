@@ -28,7 +28,7 @@ export function CustomDragLayer() {
   return (
     <div style={layerStyles}>
       <div
-        className=""
+        className="bigcal-pointer-events-none bigcal-rounded bigcal-border bigcal-shadow-md"
         style={{
           width: item.width,
           height: item.height,

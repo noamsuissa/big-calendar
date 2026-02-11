@@ -91,14 +91,14 @@ export function EditEventDialog({ children, event, onEventUpdated, showFormDiscl
         <DialogHeader>
           <DialogTitle>Edit Event</DialogTitle>
           {showFormDisclaimer && (
-            <DialogDescription className="mt-2">
+            <DialogDescription className="bigcal-mt-2">
               Update the event details. Changes will be saved according to your API configuration.
             </DialogDescription>
           )}
         </DialogHeader>
 
         <Form {...form}>
-          <form id="event-form" onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4 py-4">
+          <form id="event-form" onSubmit={form.handleSubmit(onSubmit)} className="bigcal-grid bigcal-gap-4 bigcal-py-4">
             {!singleUser && (
               <FormField
                 control={form.control}
@@ -114,14 +114,14 @@ export function EditEventDialog({ children, event, onEventUpdated, showFormDiscl
 
                         <SelectContent>
                           {users.map(user => (
-                            <SelectItem key={user.id} value={user.id} className="flex-1">
-                              <div className="flex items-center gap-2">
-                                <Avatar key={user.id} className="size-6">
+                            <SelectItem key={user.id} value={user.id} className="bigcal-flex-1">
+                              <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+                                <Avatar key={user.id} className="bigcal-size-6">
                                   <AvatarImage src={user.picturePath ?? undefined} alt={user.name} />
-                                  <AvatarFallback className="text-xxs">{user.name[0]}</AvatarFallback>
+                                  <AvatarFallback className="bigcal-text-xxs">{user.name[0]}</AvatarFallback>
                                 </Avatar>
 
-                                <p className="truncate">{user.name}</p>
+                                <p className="bigcal-truncate">{user.name}</p>
                               </div>
                             </SelectItem>
                           ))}
@@ -150,12 +150,12 @@ export function EditEventDialog({ children, event, onEventUpdated, showFormDiscl
               )}
             />
 
-            <div className="flex items-start gap-2">
+            <div className="bigcal-flex bigcal-items-start bigcal-gap-2">
               <FormField
                 control={form.control}
                 name="startDate"
                 render={({ field, fieldState }) => (
-                  <FormItem className="flex-1">
+                  <FormItem className="bigcal-flex-1">
                     <FormLabel htmlFor="startDate">Start Date</FormLabel>
 
                     <FormControl>
@@ -177,7 +177,7 @@ export function EditEventDialog({ children, event, onEventUpdated, showFormDiscl
                 control={form.control}
                 name="startTime"
                 render={({ field, fieldState }) => (
-                  <FormItem className="flex-1">
+                  <FormItem className="bigcal-flex-1">
                     <FormLabel>Start Time</FormLabel>
 
                     <FormControl>
@@ -190,12 +190,12 @@ export function EditEventDialog({ children, event, onEventUpdated, showFormDiscl
               />
             </div>
 
-            <div className="flex items-start gap-2">
+            <div className="bigcal-flex bigcal-items-start bigcal-gap-2">
               <FormField
                 control={form.control}
                 name="endDate"
                 render={({ field, fieldState }) => (
-                  <FormItem className="flex-1">
+                  <FormItem className="bigcal-flex-1">
                     <FormLabel>End Date</FormLabel>
                     <FormControl>
                       <SingleDayPicker
@@ -214,7 +214,7 @@ export function EditEventDialog({ children, event, onEventUpdated, showFormDiscl
                 control={form.control}
                 name="endTime"
                 render={({ field, fieldState }) => (
-                  <FormItem className="flex-1">
+                  <FormItem className="bigcal-flex-1">
                     <FormLabel>End Time</FormLabel>
 
                     <FormControl>
@@ -241,50 +241,50 @@ export function EditEventDialog({ children, event, onEventUpdated, showFormDiscl
 
                       <SelectContent>
                         <SelectItem value="blue">
-                          <div className="flex items-center gap-2">
-                            <div className="size-3.5 rounded-full bg-blue-600" />
+                          <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+                            <div className="bigcal-size-3.5 bigcal-rounded-full bigcal-bg-blue-600" />
                             Blue
                           </div>
                         </SelectItem>
 
                         <SelectItem value="green">
-                          <div className="flex items-center gap-2">
-                            <div className="size-3.5 rounded-full bg-green-600" />
+                          <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+                            <div className="bigcal-size-3.5 bigcal-rounded-full bigcal-bg-green-600" />
                             Green
                           </div>
                         </SelectItem>
 
                         <SelectItem value="red">
-                          <div className="flex items-center gap-2">
-                            <div className="size-3.5 rounded-full bg-red-600" />
+                          <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+                            <div className="bigcal-size-3.5 bigcal-rounded-full bigcal-bg-red-600" />
                             Red
                           </div>
                         </SelectItem>
 
                         <SelectItem value="yellow">
-                          <div className="flex items-center gap-2">
-                            <div className="size-3.5 rounded-full bg-yellow-600" />
+                          <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+                            <div className="bigcal-size-3.5 bigcal-rounded-full bigcal-bg-yellow-600" />
                             Yellow
                           </div>
                         </SelectItem>
 
                         <SelectItem value="purple">
-                          <div className="flex items-center gap-2">
-                            <div className="size-3.5 rounded-full bg-purple-600" />
+                          <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+                            <div className="bigcal-size-3.5 bigcal-rounded-full bigcal-bg-purple-600" />
                             Purple
                           </div>
                         </SelectItem>
 
                         <SelectItem value="orange">
-                          <div className="flex items-center gap-2">
-                            <div className="size-3.5 rounded-full bg-orange-600" />
+                          <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+                            <div className="bigcal-size-3.5 bigcal-rounded-full bigcal-bg-orange-600" />
                             Orange
                           </div>
                         </SelectItem>
 
                         <SelectItem value="gray">
-                          <div className="flex items-center gap-2">
-                            <div className="size-3.5 rounded-full bg-neutral-600" />
+                          <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+                            <div className="bigcal-size-3.5 bigcal-rounded-full bigcal-bg-neutral-600" />
                             Gray
                           </div>
                         </SelectItem>

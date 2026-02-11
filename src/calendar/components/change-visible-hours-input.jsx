@@ -19,31 +19,31 @@ export function ChangeVisibleHoursInput() {
   };
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-2">
-        <p className="text-sm font-semibold">Change visible hours</p>
+    <div className="bigcal-flex bigcal-flex-col bigcal-gap-2">
+      <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+        <p className="bigcal-text-sm bigcal-font-semibold">Change visible hours</p>
 
         <TooltipProvider delayDuration={100}>
           <Tooltip>
             <TooltipTrigger>
-              <Info className="size-3" />
+              <Info className="bigcal-size-3" />
             </TooltipTrigger>
 
-            <TooltipContent className="max-w-80 text-center">
+            <TooltipContent className="bigcal-max-w-80 bigcal-text-center">
               <p>If an event falls outside the specified visible hours, the visible hours will automatically adjust to include that event.</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="bigcal-flex bigcal-items-center bigcal-gap-4">
         <p>From</p>
         <TimeInput id="start-time" hourCycle={12} granularity="hour" value={from} onChange={setFrom} />
         <p>To</p>
         <TimeInput id="end-time" hourCycle={12} granularity="hour" value={to} onChange={setTo} />
       </div>
 
-      <Button className="mt-4 w-fit" onClick={handleApply}>
+      <Button className="bigcal-mt-4 bigcal-w-fit" onClick={handleApply}>
         Apply
       </Button>
     </div>

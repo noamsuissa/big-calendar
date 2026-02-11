@@ -143,8 +143,8 @@ function MyCalendar() {
 ```jsx
 <ClientContainer
   view="month"
-  className="my-custom-calendar"
-  headerClassName="custom-header"
+  className="bigcal-my-custom-calendar"
+  headerclassName="bigcal-custom-header"
 />
 ```
 

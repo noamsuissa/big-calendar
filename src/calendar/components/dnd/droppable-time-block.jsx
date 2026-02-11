@@ -41,7 +41,7 @@ export function DroppableTimeBlock({ date, hour, minute, children }) {
   );
 
   return (
-    <div ref={drop} className={cn("h-[24px]", isOver && canDrop && "bg-accent/50")}>
+    <div ref={drop} className={cn("bigcal-h-[24px]", isOver && canDrop && "bigcal-bg-accent/50")}>
       {children}
     </div>
   );

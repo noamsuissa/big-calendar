@@ -7,27 +7,27 @@ import { useCalendar } from "@/calendar/contexts/calendar-context";
 import { EventDetailsDialog } from "@/calendar/components/dialogs/event-details-dialog";
 
 const agendaEventCardVariants = cva(
-  "flex select-none items-center justify-between gap-3 rounded-md border p-3 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+  "bigcal-flex bigcal-select-none bigcal-items-center bigcal-justify-between bigcal-gap-3 bigcal-rounded-md bigcal-border bigcal-p-3 bigcal-text-sm focus-visible:bigcal-outline-none focus-visible:bigcal-ring-1 focus-visible:bigcal-ring-ring",
   {
     variants: {
       color: {
         // Colored variants
-        blue: "border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-300 [&_.event-dot]:fill-blue-600",
-        green: "border-green-200 bg-green-50 text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-300 [&_.event-dot]:fill-green-600",
-        red: "border-red-200 bg-red-50 text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-300 [&_.event-dot]:fill-red-600",
-        yellow: "border-yellow-200 bg-yellow-50 text-yellow-700 dark:border-yellow-800 dark:bg-yellow-950 dark:text-yellow-300 [&_.event-dot]:fill-yellow-600",
-        purple: "border-purple-200 bg-purple-50 text-purple-700 dark:border-purple-800 dark:bg-purple-950 dark:text-purple-300 [&_.event-dot]:fill-purple-600",
-        orange: "border-orange-200 bg-orange-50 text-orange-700 dark:border-orange-800 dark:bg-orange-950 dark:text-orange-300 [&_.event-dot]:fill-orange-600",
-        gray: "border-neutral-200 bg-neutral-50 text-neutral-900 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 [&_.event-dot]:fill-neutral-600",
+        blue: "bigcal-border-blue-200 bigcal-bg-blue-50 bigcal-text-blue-700 dark:bigcal-border-blue-800 dark:bigcal-bg-blue-950 dark:bigcal-text-blue-300 [&_.bigcal-event-dot]:bigcal-fill-blue-600",
+        green: "bigcal-border-green-200 bigcal-bg-green-50 bigcal-text-green-700 dark:bigcal-border-green-800 dark:bigcal-bg-green-950 dark:bigcal-text-green-300 [&_.bigcal-event-dot]:bigcal-fill-green-600",
+        red: "bigcal-border-red-200 bigcal-bg-red-50 bigcal-text-red-700 dark:bigcal-border-red-800 dark:bigcal-bg-red-950 dark:bigcal-text-red-300 [&_.bigcal-event-dot]:bigcal-fill-red-600",
+        yellow: "bigcal-border-yellow-200 bigcal-bg-yellow-50 bigcal-text-yellow-700 dark:bigcal-border-yellow-800 dark:bigcal-bg-yellow-950 dark:bigcal-text-yellow-300 [&_.bigcal-event-dot]:bigcal-fill-yellow-600",
+        purple: "bigcal-border-purple-200 bigcal-bg-purple-50 bigcal-text-purple-700 dark:bigcal-border-purple-800 dark:bigcal-bg-purple-950 dark:bigcal-text-purple-300 [&_.bigcal-event-dot]:bigcal-fill-purple-600",
+        orange: "bigcal-border-orange-200 bigcal-bg-orange-50 bigcal-text-orange-700 dark:bigcal-border-orange-800 dark:bigcal-bg-orange-950 dark:bigcal-text-orange-300 [&_.bigcal-event-dot]:bigcal-fill-orange-600",
+        gray: "bigcal-border-neutral-200 bigcal-bg-neutral-50 bigcal-text-neutral-900 dark:bigcal-border-neutral-700 dark:bigcal-bg-neutral-900 dark:bigcal-text-neutral-300 [&_.bigcal-event-dot]:bigcal-fill-neutral-600",
 
         // Dot variants
-        "blue-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-blue-600",
-        "green-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-green-600",
-        "red-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-red-600",
-        "orange-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-orange-600",
-        "purple-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-purple-600",
-        "yellow-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-yellow-600",
-        "gray-dot": "bg-neutral-50 dark:bg-neutral-900 [&_.event-dot]:fill-neutral-600",
+        "blue-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-blue-600",
+        "green-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-green-600",
+        "red-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-red-600",
+        "orange-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-orange-600",
+        "purple-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-purple-600",
+        "yellow-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-yellow-600",
+        "gray-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-neutral-600",
       },
     },
     defaultVariants: {
@@ -56,17 +56,17 @@ export function AgendaEventCard({ event, eventCurrentDay, eventTotalDays, classN
   return (
     <EventDetailsDialog event={event}>
       <div role="button" tabIndex={0} className={agendaEventCardClasses} onKeyDown={handleKeyDown}>
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-1.5">
+        <div className="bigcal-flex bigcal-flex-col bigcal-gap-2">
+          <div className="bigcal-flex bigcal-items-center bigcal-gap-1.5">
             {["mixed", "dot"].includes(badgeVariant) && (
-              <svg width="8" height="8" viewBox="0 0 8 8" className="event-dot shrink-0">
+              <svg width="8" height="8" viewBox="0 0 8 8" className="bigcal-event-dot bigcal-shrink-0">
                 <circle cx="4" cy="4" r="4" />
               </svg>
             )}
 
-            <p className="font-medium">
+            <p className="bigcal-font-medium">
               {eventCurrentDay && eventTotalDays && (
-                <span className="mr-1 text-xs">
+                <span className="bigcal-mr-1 bigcal-text-xs">
                   Day {eventCurrentDay} of {eventTotalDays} •{" "}
                 </span>
               )}
@@ -74,21 +74,21 @@ export function AgendaEventCard({ event, eventCurrentDay, eventTotalDays, classN
             </p>
           </div>
 
-          <div className="mt-1 flex items-center gap-1">
-            <User className="size-3 shrink-0" />
-            <p className="text-xs text-foreground">{event.user.name}</p>
+          <div className="bigcal-mt-1 bigcal-flex bigcal-items-center bigcal-gap-1">
+            <User className="bigcal-size-3 bigcal-shrink-0" />
+            <p className="bigcal-text-xs bigcal-text-foreground">{event.user.name}</p>
           </div>
 
-          <div className="flex items-center gap-1">
-            <Clock className="size-3 shrink-0" />
-            <p className="text-xs text-foreground">
+          <div className="bigcal-flex bigcal-items-center bigcal-gap-1">
+            <Clock className="bigcal-size-3 bigcal-shrink-0" />
+            <p className="bigcal-text-xs bigcal-text-foreground">
               {format(startDate, "h:mm a")} - {format(endDate, "h:mm a")}
             </p>
           </div>
 
-          <div className="flex items-center gap-1">
-            <Text className="size-3 shrink-0" />
-            <p className="text-xs text-foreground">{event.description}</p>
+          <div className="bigcal-flex bigcal-items-center bigcal-gap-1">
+            <Text className="bigcal-size-3 bigcal-shrink-0" />
+            <p className="bigcal-text-xs bigcal-text-foreground">{event.description}</p>
           </div>
         </div>
       </div>

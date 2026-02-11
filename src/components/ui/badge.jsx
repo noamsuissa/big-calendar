@@ -4,14 +4,14 @@ import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "bigcal-inline-flex bigcal-items-center bigcal-rounded-md bigcal-border bigcal-px-2.5 bigcal-py-0.5 bigcal-text-xs bigcal-font-semibold bigcal-transition-colors focus:bigcal-outline-none focus:bigcal-ring-2 focus:bigcal-ring-ring focus:bigcal-ring-offset-2",
   {
     variants: {
       variant: {
-        default: "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
-        secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        destructive: "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
-        outline: "text-foreground",
+        default: "bigcal-border-transparent bigcal-bg-primary bigcal-text-primary-foreground bigcal-shadow hover:bigcal-bg-primary/80",
+        secondary: "bigcal-border-transparent bigcal-bg-secondary bigcal-text-secondary-foreground hover:bigcal-bg-secondary/80",
+        destructive: "bigcal-border-transparent bigcal-bg-destructive bigcal-text-destructive-foreground bigcal-shadow hover:bigcal-bg-destructive/80",
+        outline: "bigcal-text-foreground",
       },
     },
     defaultVariants: {

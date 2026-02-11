@@ -14,8 +14,8 @@ export function CalendarYearView({ allEvents }) {
   }, [selectedDate]);
 
   return (
-    <div className="p-4">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="bigcal-p-4">
+      <div className="bigcal-grid bigcal-grid-cols-1 bigcal-gap-4 md:bigcal-grid-cols-2 lg:bigcal-grid-cols-3 xl:bigcal-grid-cols-4">
         {months.map(month => (
           <YearViewMonth key={month.toString()} month={month} events={allEvents} />
         ))}

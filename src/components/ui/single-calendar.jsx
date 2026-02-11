@@ -15,38 +15,38 @@ function SingleCalendar({ className, classNames, showOutsideDays = true, selecte
       showOutsideDays={showOutsideDays}
       month={currentMonth}
       onMonthChange={setCurrentMonth}
-      className={cn("p-3", className)}
+      className={cn("bigcal-p-3", className)}
       classNames={{
-        months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
-        month: "space-y-4",
-        caption: "flex justify-center pt-1 relative items-center",
-        caption_label: "text-sm font-medium",
-        nav: "space-x-1 flex items-center",
-        nav_button: cn(buttonVariants({ variant: "outline" }), "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"),
-        nav_button_previous: "absolute left-1",
-        nav_button_next: "absolute right-1",
-        table: "w-full border-collapse space-y-1",
-        head_row: "flex",
-        head_cell: "text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]",
-        row: "flex w-full mt-2",
+        months: "bigcal-flex bigcal-flex-col sm:bigcal-flex-row bigcal-space-y-4 sm:bigcal-space-x-4 sm:bigcal-space-y-0",
+        month: "bigcal-space-y-4",
+        caption: "bigcal-flex bigcal-justify-center bigcal-pt-1 bigcal-relative bigcal-items-center",
+        caption_label: "bigcal-text-sm bigcal-font-medium",
+        nav: "bigcal-space-x-1 bigcal-flex bigcal-items-center",
+        nav_button: cn(buttonVariants({ variant: "outline" }), "bigcal-h-7 bigcal-w-7 bigcal-bg-transparent bigcal-p-0 bigcal-opacity-50 hover:bigcal-opacity-100"),
+        nav_button_previous: "bigcal-absolute bigcal-left-1",
+        nav_button_next: "bigcal-absolute bigcal-right-1",
+        table: "bigcal-w-full bigcal-border-collapse bigcal-space-y-1",
+        head_row: "bigcal-flex",
+        head_cell: "bigcal-text-muted-foreground bigcal-rounded-md bigcal-w-8 bigcal-font-normal bigcal-text-[0.8rem]",
+        row: "bigcal-flex bigcal-w-full bigcal-mt-2",
         cell: cn(
-          "relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-accent [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected].day-range-end)]:rounded-r-md",
-          "[&:has([aria-selected])]:rounded-md"
+          "bigcal-relative bigcal-p-0 bigcal-text-center bigcal-text-sm focus-within:bigcal-relative focus-within:bigcal-z-20 [&:has([aria-selected])]:bigcal-bg-accent [&:has([aria-selected].day-outside)]:bigcal-bg-accent/50 [&:has([aria-selected].day-range-end)]:bigcal-rounded-r-md",
+          "[&:has([aria-selected])]:bigcal-rounded-md"
         ),
-        day: cn(buttonVariants({ variant: "ghost" }), "h-8 w-8 p-0 font-normal aria-selected:opacity-100"),
-        day_range_start: "day-range-start",
-        day_range_end: "day-range-end",
-        day_selected: "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-        day_today: "bg-accent text-accent-foreground",
-        day_outside: "day-outside text-muted-foreground aria-selected:bg-accent/50 aria-selected:text-muted-foreground",
-        day_disabled: "text-muted-foreground opacity-50",
-        day_range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
-        day_hidden: "invisible",
+        day: cn(buttonVariants({ variant: "ghost" }), "bigcal-h-8 bigcal-w-8 bigcal-p-0 bigcal-font-normal aria-selected:bigcal-opacity-100"),
+        day_range_start: "bigcal-day-range-start",
+        day_range_end: "bigcal-day-range-end",
+        day_selected: "bigcal-bg-primary bigcal-text-primary-foreground hover:bigcal-bg-primary hover:bigcal-text-primary-foreground focus:bigcal-bg-primary focus:bigcal-text-primary-foreground",
+        day_today: "bigcal-bg-accent bigcal-text-accent-foreground",
+        day_outside: "bigcal-day-outside bigcal-text-muted-foreground aria-selected:bigcal-bg-accent/50 aria-selected:bigcal-text-muted-foreground",
+        day_disabled: "bigcal-text-muted-foreground bigcal-opacity-50",
+        day_range_middle: "aria-selected:bigcal-bg-accent aria-selected:bigcal-text-accent-foreground",
+        day_hidden: "bigcal-invisible",
         ...classNames,
       }}
       components={{
-        IconLeft: ({ className, ...props }) => <ChevronLeft className={cn("h-4 w-4", className)} {...props} />,
-        IconRight: ({ className, ...props }) => <ChevronRight className={cn("h-4 w-4", className)} {...props} />,
+        IconLeft: ({ className, ...props }) => <ChevronLeft className={cn("bigcal-h-4 bigcal-w-4", className)} {...props} />,
+        IconRight: ({ className, ...props }) => <ChevronRight className={cn("bigcal-h-4 bigcal-w-4", className)} {...props} />,
       }}
       {...props}
     />

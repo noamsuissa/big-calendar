@@ -47,7 +47,7 @@ const FormItem = React.forwardRef(({ className, ...props }, ref) => {
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div ref={ref} className={cn("space-y-2", className)} {...props} />
+      <div ref={ref} className={cn("bigcal-space-y-2", className)} {...props} />
     </FormItemContext.Provider>
   );
 });
@@ -57,7 +57,7 @@ const FormLabel = React.forwardRef(
   ({ className, ...props }, ref) => {
     const { error, formItemId } = useFormField();
 
-    return <Label ref={ref} className={cn(error && "text-destructive", className)} htmlFor={formItemId} {...props} />;
+    return <Label ref={ref} className={cn(error && "bigcal-text-destructive", className)} htmlFor={formItemId} {...props} />;
   }
 );
 FormLabel.displayName = "FormLabel";
@@ -80,7 +80,7 @@ FormControl.displayName = "FormControl";
 const FormDescription = React.forwardRef(({ className, ...props }, ref) => {
   const { formDescriptionId } = useFormField();
 
-  return <p ref={ref} id={formDescriptionId} className={cn("text-[0.8rem] text-muted-foreground", className)} {...props} />;
+  return <p ref={ref} id={formDescriptionId} className={cn("bigcal-text-[0.8rem] bigcal-text-muted-foreground", className)} {...props} />;
 });
 FormDescription.displayName = "FormDescription";
 
@@ -93,7 +93,7 @@ const FormMessage = React.forwardRef(({ className, children, ...props }, ref) =>
   }
 
   return (
-    <p ref={ref} id={formMessageId} className={cn("text-[0.8rem] font-medium text-destructive", className)} {...props}>
+    <p ref={ref} id={formMessageId} className={cn("bigcal-text-[0.8rem] bigcal-font-medium bigcal-text-destructive", className)} {...props}>
       {body}
     </p>
   );

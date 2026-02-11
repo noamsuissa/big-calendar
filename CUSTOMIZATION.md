@@ -377,9 +377,9 @@ Add custom classes to override or extend component styles:
 ```jsx
 <ClientContainer
   view="month"
-  className="my-custom-calendar" // Custom container styles
-  headerClassName="custom-header" // Custom header styles
-  contentClassName="custom-content" // Custom content area styles
+  className="bigcal-my-custom-calendar" // Custom container styles
+  headerclassName="bigcal-custom-header" // Custom header styles
+  contentclassName="bigcal-custom-content" // Custom content area styles
   headerProps={{
     className: "additional-header-class",
     leftSectionClassName: "custom-left-section",
@@ -440,13 +440,13 @@ Add custom classes to override or extend component styles:
 // Remove border radius
 <ClientContainer
   view="month"
-  className="rounded-none"
+  className="bigcal-rounded-none"
 />
 
 // Add custom shadow
 <ClientContainer
   view="month"
-  className="shadow-2xl"
+  className="bigcal-shadow-2xl"
 />
 
 // Custom header styling
@@ -486,9 +486,9 @@ function MyStyledCalendar() {
     <CalendarProvider useMocks={true}>
       <ClientContainer
         view="month"
-        className="my-custom-calendar shadow-lg"
-        headerClassName="bg-blue-50 border-blue-200"
-        contentClassName="p-2"
+        className="bigcal-my-custom-calendar shadow-lg"
+        headerclassName="bigcal-bg-blue-50 border-blue-200"
+        contentclassName="bigcal-p-2"
         headerProps={{
           leftSectionClassName: "gap-4",
           rightSectionClassName: "gap-2",

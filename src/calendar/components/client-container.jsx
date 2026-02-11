@@ -103,7 +103,7 @@ export function ClientContainer({
   }, [filteredEvents]);
 
   return (
-    <div className={cn("overflow-hidden rounded-xl border", className)}>
+    <div className={cn("bigcal-overflow-hidden bigcal-rounded-xl bigcal-border", className)}>
       {showHeader && (
         <CalendarHeader 
           view={view} 

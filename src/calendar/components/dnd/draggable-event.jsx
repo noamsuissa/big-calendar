@@ -29,7 +29,7 @@ export function DraggableEvent({ event, children }) {
   drag(ref);
 
   return (
-    <div ref={ref} className={cn(isDragging && "opacity-40")}>
+    <div ref={ref} className={cn(isDragging && "bigcal-opacity-40")}>
       {children}
     </div>
   );

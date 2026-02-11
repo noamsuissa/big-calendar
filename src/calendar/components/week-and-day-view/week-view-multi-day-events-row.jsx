@@ -71,16 +71,16 @@ export function WeekViewMultiDayEventsRow({ selectedDate, multiDayEvents }) {
   }
 
   return (
-    <div className="hidden overflow-hidden sm:flex">
-      <div className="w-18 border-b"></div>
-      <div className="grid flex-1 grid-cols-7 divide-x border-b border-l">
+    <div className="bigcal-hidden bigcal-overflow-hidden sm:bigcal-flex">
+      <div className="bigcal-w-18 bigcal-border-b"></div>
+      <div className="bigcal-grid bigcal-flex-1 bigcal-grid-cols-7 bigcal-divide-x bigcal-border-b bigcal-border-l">
         {weekDays.map((day, dayIndex) => (
-          <div key={day.toISOString()} className="flex h-full flex-col gap-1 py-1">
+          <div key={day.toISOString()} className="bigcal-flex bigcal-h-full bigcal-flex-col bigcal-gap-1 bigcal-py-1">
             {eventRows.map((row, rowIndex) => {
               const event = row.find(e => e.startIndex <= dayIndex && e.endIndex >= dayIndex);
 
               if (!event) {
-                return <div key={`${rowIndex}-${dayIndex}`} className="h-6.5" />;
+                return <div key={`${rowIndex}-${dayIndex}`} className="bigcal-h-6.5" />;
               }
 
               let position = "none";

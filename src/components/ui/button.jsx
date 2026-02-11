@@ -5,22 +5,22 @@ import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "bigcal-inline-flex bigcal-items-center bigcal-justify-center bigcal-gap-2 bigcal-whitespace-nowrap bigcal-rounded-md bigcal-text-sm bigcal-font-medium bigcal-transition-colors focus-visible:bigcal-outline-none focus-visible:bigcal-ring-1 focus-visible:bigcal-ring-ring disabled:bigcal-pointer-events-none disabled:bigcal-opacity-50 [&_svg]:bigcal-pointer-events-none [&_svg]:bigcal-size-4 [&_svg]:bigcal-shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-        outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: "bigcal-bg-primary bigcal-text-primary-foreground bigcal-shadow hover:bigcal-bg-primary/90",
+        destructive: "bigcal-bg-destructive bigcal-text-destructive-foreground bigcal-shadow-sm hover:bigcal-bg-destructive/90",
+        outline: "bigcal-border bigcal-border-input bigcal-bg-background bigcal-shadow-sm hover:bigcal-bg-accent hover:bigcal-text-accent-foreground",
+        secondary: "bigcal-bg-secondary bigcal-text-secondary-foreground bigcal-shadow-sm hover:bigcal-bg-secondary/80",
+        ghost: "hover:bigcal-bg-accent hover:bigcal-text-accent-foreground",
+        link: "bigcal-text-primary bigcal-underline-offset-4 hover:bigcal-underline",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8",
-        icon: "size-9",
+        default: "bigcal-h-9 bigcal-px-4 bigcal-py-2",
+        sm: "bigcal-h-8 bigcal-rounded-md bigcal-px-3 bigcal-text-xs",
+        lg: "bigcal-h-10 bigcal-rounded-md bigcal-px-8",
+        icon: "bigcal-size-9",
       },
     },
     defaultVariants: {

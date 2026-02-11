@@ -56,26 +56,26 @@ export function CalendarHeader({
   const shouldShowUserSelect = showUserSelect && !singleUser;
 
   return (
-    <div className={cn("flex flex-col gap-4 border-b p-4 lg:flex-row lg:items-center lg:justify-between", className)}>
+    <div className={cn("bigcal-flex bigcal-flex-col bigcal-gap-4 bigcal-border-b bigcal-p-4 lg:bigcal-flex-row lg:bigcal-items-center lg:bigcal-justify-between", className)}>
       {(showTodayButton || showDateNavigator) && (
-        <div className={cn("flex items-center gap-3", leftSectionClassName)}>
+        <div className={cn("bigcal-flex bigcal-items-center bigcal-gap-3", leftSectionClassName)}>
           {showTodayButton && <TodayButton />}
           {showDateNavigator && <DateNavigator view={view} events={events} />}
         </div>
       )}
 
       {(showViewSwitcher || showUserSelect || showAddEventButton) && (
-        <div className={cn("flex flex-col items-center gap-1.5 sm:flex-row sm:justify-between", rightSectionClassName)}>
+        <div className={cn("bigcal-flex bigcal-flex-col bigcal-items-center bigcal-gap-1.5 sm:bigcal-flex-row sm:bigcal-justify-between", rightSectionClassName)}>
           {(showViewSwitcher || showUserSelect) && (
-            <div className="flex w-full items-center gap-1.5">
+            <div className="bigcal-flex bigcal-w-full bigcal-items-center bigcal-gap-1.5">
               {showViewSwitcher && (
-                <div className={cn("inline-flex first:rounded-r-none last:rounded-l-none [&:not(:first-child):not(:last-child)]:rounded-none", viewSwitcherClassName)}>
+                <div className={cn("bigcal-inline-flex bigcal-first:rounded-r-none bigcal-last:rounded-l-none bigcal-[&:not(:first-child):not(:last-child)]:bigcal-rounded-none", viewSwitcherClassName)}>
                   {availableViews.includes("day") && (
                     <Button 
                       aria-label="View by day" 
                       size="icon" 
                       variant={view === "day" ? "default" : "outline"} 
-                      className="rounded-r-none [&_svg]:size-5"
+                      className="bigcal-rounded-r-none bigcal-[&_svg]:bigcal-size-5"
                       onClick={() => handleViewChange("day")}
                     >
                       <List strokeWidth={1.8} />
@@ -87,7 +87,7 @@ export function CalendarHeader({
                       aria-label="View by week"
                       size="icon"
                       variant={view === "week" ? "default" : "outline"}
-                      className="-ml-px rounded-none [&_svg]:size-5"
+                      className="bigcal--ml-px bigcal-rounded-none bigcal-[&_svg]:bigcal-size-5"
                       onClick={() => handleViewChange("week")}
                     >
                       <Columns strokeWidth={1.8} />
@@ -99,7 +99,7 @@ export function CalendarHeader({
                       aria-label="View by month"
                       size="icon"
                       variant={view === "month" ? "default" : "outline"}
-                      className="-ml-px rounded-none [&_svg]:size-5"
+                      className="bigcal--ml-px bigcal-rounded-none bigcal-[&_svg]:bigcal-size-5"
                       onClick={() => handleViewChange("month")}
                     >
                       <Grid2x2 strokeWidth={1.8} />
@@ -111,7 +111,7 @@ export function CalendarHeader({
                       aria-label="View by year"
                       size="icon"
                       variant={view === "year" ? "default" : "outline"}
-                      className="-ml-px rounded-none [&_svg]:size-5"
+                      className="bigcal--ml-px bigcal-rounded-none bigcal-[&_svg]:bigcal-size-5"
                       onClick={() => handleViewChange("year")}
                     >
                       <Grid3x3 strokeWidth={1.8} />
@@ -123,7 +123,7 @@ export function CalendarHeader({
                       aria-label="View by agenda"
                       size="icon"
                       variant={view === "agenda" ? "default" : "outline"}
-                      className="-ml-px rounded-l-none [&_svg]:size-5"
+                      className="bigcal--ml-px bigcal-rounded-l-none bigcal-[&_svg]:bigcal-size-5"
                       onClick={() => handleViewChange("agenda")}
                     >
                       <CalendarRange strokeWidth={1.8} />
@@ -138,7 +138,7 @@ export function CalendarHeader({
 
           {showAddEventButton && (
             <AddEventDialog>
-              <Button className={cn("w-full sm:w-auto", addButtonClassName)}>
+              <Button className={cn("bigcal-w-full sm:bigcal-w-auto", addButtonClassName)}>
                 <Plus />
                 Add Event
               </Button>
