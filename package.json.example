@@ -1,0 +1,30 @@
+{
+  "name": "@your-org/big-calendar",
+  "version": "0.1.0",
+  "description": "A highly customizable React calendar component library",
+  "main": "./dist/big-calendar.cjs",
+  "module": "./dist/big-calendar.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/big-calendar.mjs",
+      "require": "./dist/big-calendar.cjs"
+    },
+    "./styles": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CUSTOMIZATION.md"
+  ],
+  "keywords": [
+    "react",
+    "calendar",
+    "calendar-component"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/big-calendar.git"
+  }
+}

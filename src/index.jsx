@@ -94,3 +94,6 @@ export { THEMES_VALUES } from "./constants/theme.const";
 
 // Styles
 export { inter } from "./styles/fonts";
+
+// Import CSS for bundling (consumers will need to import this)
+import "./styles/globals.css";

@@ -1,284 +1,185 @@
 # Big Calendar
 
-A feature-rich calendar application built with Next.js, TypeScript, and Tailwind CSS. This project provides a modern, responsive interface for managing events and schedules with multiple viewing options.
+A highly customizable React calendar component library with multiple views, drag-and-drop, API integration, and extensive customization options.
 
-<p align="center">
-  <a href="https://www.buymeacoffee.com/lramos33" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
-</p>
-
-## Preview
-
-![image](public/preview_1.png)
-![image](public/preview_2.png)
-![image](public/preview_3.png)
-![image](public/preview_4.png)
-![image](public/preview_5.png)
+> **Note**: This package is originally from [lramos33/big-calendar](https://github.com/lramos33/big-calendar) on GitHub.
 
 ## Features
 
-- 📅 Multiple calendar views:
+- 📅 **Multiple Views**: Day, Week, Month, Year, and Agenda views
+- 🎨 **Highly Customizable**: Full control over styling, API integration, and behavior
+- 🔄 **Drag & Drop**: Reschedule events by dragging
+- 🎯 **API Integration**: Connect to your backend or third-party calendars
+- 🎨 **Styling Control**: CSS variables, className props, and theme customization
+- 👤 **Single-User Mode**: Simplified UI for single-user applications
+- 📱 **Responsive**: Works on all screen sizes
+- 🌙 **Dark Mode**: Built-in dark mode support
 
-  - Agenda view
-  - Year view
-  - Month view
-  - Week view with detailed time slots
-  - Day view with hourly breakdown
-
-- 🎨 Event customization:
-
-  - Multiple color options for events
-  - Three badge display variants (dot, colored and mixed)
-  - Support for single and multi-day events
-
-- 🔄 Drag and Drop:
-
-  - Easily reschedule events by dragging and dropping
-  - Move events between days in month view
-  - Adjust event timing in week/day views
-  - Visual feedback during dragging operations
-
-- 👥 User management:
-
-  - Filter events by user
-  - View all users's events simultaneously
-  - User avatars and profile integration
-
-- ⚡ Real-time features:
-
-  - Live time indicator
-  - Current event highlighting
-  - Dynamic event positioning
-
-- ⏰ Time customization:
-
-  - Configurable working hours with distinct styling
-  - Adjustable visible hours range
-  - Focus on relevant time periods
-
-- 🎯 UI/UX features:
-  - Responsive design for all screen sizes
-  - Intuitive navigation between dates
-  - Clean and modern interface
-  - Dark mode support
-
-## Tech stack
-
-- **Framework**: Next.js 14
-- **Language**: TypeScript
-- **Styling**: Tailwind v3
-- **Date Management**: date-fns
-- **UI Components**: shadcn/ui
-- **State Management**: React Context
-
-## Getting started
-
-1. Clone the repository:
+## Installation
 
 ```bash
-git clone https://github.com/lramos33/big-calendar.git
-cd calendar-app
+npm install big-calendar
 ```
 
-2. Install dependencies:
+## Quick Start
 
-```bash
-npm install
-```
+```jsx
+import { CalendarProvider, ClientContainer } from 'big-calendar';
+import 'big-calendar/styles'; // Import styles
 
-3. Start the development server:
-
-```bash
-npm run dev
-```
-
-or
-
-```bash
-npm run turbo
-```
-
-4. Open your browser and navigate to `http://localhost:3000` to view the application.
-
-## Project structure
-
-The project structure is organized as follows:
-
-```
-src/
-├── app/
-├── calendar/                     # All files related to calendar are in this folder
-│   ├── components/
-│   │   ├── agenda-view/          # Agenda view components
-│   │   ├── dialogs/              # Dialogs components
-│   │   ├── dnd/                  # Drag and drop components
-│   │   ├── header/               # Calendar header components
-│   │   ├── month-view/           # Month view components
-│   │   ├── week-and-day-view/    # Week and day view components
-│   │   └── year-view/            # Year view components
-│   ├── contexts/                 # Calendar context and state management
-│   ├── helpers/                  # Utility functions
-│   ├── interfaces/               # TypeScript interfaces
-│   └── types/                    # TypeScript types
-└── components/                   # Components not related to calendar eg: ui and layout components
-```
-
-## How to implement in your project
-
-### Installation
-
-1. Copy the required folders to your project:
-
-```
-src/calendar/         # Core calendar functionality
-src/components/ui/    # UI components used by the calendar
-src/hooks/            # Required hooks like use-disclosure
-```
-
-2. Install dependencies missing in your project
-
-### Basic setup
-
-1. **Set up the `CalendarProvider`**
-
-   Wrap your application or page with the `CalendarProvider`:
-
-```tsx
-import { CalendarProvider } from "@/calendar/contexts/calendar-context";
-
-// Fetch your events and users data
-const events = await getEvents();
-const users = await getUsers();
-
-export default function Layout({ children }) {
+function App() {
   return (
-    <CalendarProvider users={users} events={events}>
-      {children}
+    <CalendarProvider useMocks={true}>
+      <ClientContainer view="month" />
     </CalendarProvider>
   );
 }
 ```
 
-2. **Add a `CalendarView`**
+## Basic Usage
 
-   Use the `ClientContainer` to render a specific view:
+### With Mock Data
 
-```tsx
-import { ClientContainer } from "@/calendar/components/client-container";
+```jsx
+import { CalendarProvider, ClientContainer } from 'big-calendar';
+import 'big-calendar/styles';
 
-export default function CalendarPage() {
-  return <ClientContainer view="month" />;
-}
-```
-
-### Views configuration
-
-The calendar supports five different views, each can be used with the `ClientContainer` component:
-
-```tsx
-// Day view
-<ClientContainer view="day" />
-
-// Week view
-<ClientContainer view="week" />
-
-// Month view
-<ClientContainer view="month" />
-
-// Year view
-<ClientContainer view="year" />
-
-// Agenda view
-<ClientContainer view="agenda" />
-```
-
-### Data structure
-
-1. **Events Format**
-
-   Events should follow this interface (you can modify it as you want, but the calendar will expect these fields):
-
-```tsx
-interface IEvent {
-  id: string;
-  title: string;
-  description: string;
-  startDate: string; // ISO string
-  endDate: string; // ISO string
-  color: "blue" | "green" | "red" | "yellow" | "purple" | "orange";
-  user: {
-    id: string;
-    name: string;
-  };
-}
-```
-
-2. **Users format**
-
-   Users should follow this interface (you can modify it as you want, but the calendar will expect these fields):
-
-```tsx
-interface IUser {
-  id: string;
-  name: string;
-  picturePath?: string; // Optional avatar image
-}
-```
-
-### Customizing the calendar
-
-1. **Badge Variants**
-
-   You can control the event display style with the `ChangeBadgeVariantInput` component:
-
-```tsx
-import { ChangeBadgeVariantInput } from "@/calendar/components/change-badge-variant-input";
-
-// Place this anywhere in your project tree inside the CalendarProvider
-<ChangeBadgeVariantInput />;
-```
-
-2. **Creating events**
-
-   Implement your own event creation by modifying the `onSubmit` handler in the `AddEventDialog` component.
-
-### Using the Calendar Context
-
-You can access and control the calendar state from any component using the `useCalendar` hook:
-
-```tsx
-import { useCalendar } from "@/calendar/contexts/calendar-context";
-
-function MyComponent() {
-  const { selectedDate, setSelectedDate, selectedUserId, setSelectedUserId, events, users, badgeVariant, setBadgeVariant } = useCalendar();
-
-  // Your component logic
-}
-```
-
-### Example implementation
-
-```tsx
-// pages/calendar.tsx
-import { CalendarProvider } from "@/calendar/contexts/calendar-context";
-import { ClientContainer } from "@/calendar/components/client-container";
-import { ChangeBadgeVariantInput } from "@/calendar/components/change-badge-variant-input";
-
-export default function CalendarPage({ events, users }) {
+function MyCalendar() {
   return (
-    <CalendarProvider events={events} users={users}>
-      <div className="mx-auto flex max-w-screen-2xl flex-col gap-4 p-4">
-        <ClientContainer view="month" />
-        <ChangeBadgeVariantInput />
-      </div>
+    <CalendarProvider useMocks={true}>
+      <ClientContainer view="month" />
     </CalendarProvider>
   );
 }
 ```
+
+### With API Integration
+
+```jsx
+import { CalendarProvider, ClientContainer } from 'big-calendar';
+import 'big-calendar/styles';
+
+const calendarAPI = {
+  getEvents: async () => {
+    const response = await fetch('/api/events');
+    return response.json();
+  },
+  getUsers: async () => {
+    const response = await fetch('/api/users');
+    return response.json();
+  },
+  createEvent: async (eventData) => {
+    const response = await fetch('/api/events', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(eventData),
+    });
+    return response.json();
+  },
+  updateEvent: async (eventData) => {
+    const response = await fetch(`/api/events/${eventData.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(eventData),
+    });
+    return response.json();
+  },
+  deleteEvent: async (eventId) => {
+    await fetch(`/api/events/${eventId}`, { method: 'DELETE' });
+  },
+};
+
+function MyCalendar() {
+  return (
+    <CalendarProvider api={calendarAPI}>
+      <ClientContainer view="month" />
+    </CalendarProvider>
+  );
+}
+```
+
+## Customization
+
+### Side Panel for Event Details
+
+```jsx
+<CalendarProvider
+  eventClickHandler={{
+    mode: "sidePanel",
+    sidePanelPosition: "right",
+    sidePanelWidth: 400,
+  }}
+>
+  <ClientContainer view="month" />
+</CalendarProvider>
+```
+
+### Single-User Mode
+
+```jsx
+<CalendarProvider
+  singleUser={true}
+  currentUser={{
+    id: "user-123",
+    name: "John Doe",
+    picturePath: "/avatar.jpg",
+  }}
+>
+  <ClientContainer view="month" />
+</CalendarProvider>
+```
+
+### Custom Styling
+
+```css
+/* Override CSS variables */
+:root {
+  --calendar-container-border-radius: 1rem;
+  --calendar-event-border-radius: 0.5rem;
+  --calendar-event-blue-bg: 217 91% 95%;
+}
+```
+
+```jsx
+<ClientContainer
+  view="month"
+  className="my-custom-calendar"
+  headerClassName="custom-header"
+/>
+```
+
+## Documentation
+
+For complete documentation and customization options, see [CUSTOMIZATION.md](./CUSTOMIZATION.md).
+
+## Requirements
+
+- React 18+
+- Tailwind CSS (for styling)
+
+## Tailwind CSS Setup
+
+You'll need to configure Tailwind CSS in your project. Add to your `tailwind.config.js`:
+
+```js
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/big-calendar/dist/**/*.{js,jsx}", // Include big-calendar
+  ],
+  theme: {
+    extend: {
+      // Your theme extensions
+    },
+  },
+  plugins: [],
+}
+```
+
+## License
+
+MIT
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-<p align="center">
-  Made by Leonardo Ramos 👋 <a href="https://x.com/leoo_ramos1">Get in touch!</a>
-<p>

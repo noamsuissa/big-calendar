@@ -1,12 +1,64 @@
 {
   "name": "big-calendar",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+  "description": "A highly customizable React calendar component library with multiple views, drag-and-drop, and full API integration support. Originally from https://github.com/lramos33/big-calendar",
+  "keywords": [
+    "react",
+    "calendar",
+    "calendar-component",
+    "react-calendar",
+    "event-calendar",
+    "scheduler",
+    "date-picker",
+    "calendar-view"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lramos33/big-calendar.git"
+  },
+  "homepage": "https://github.com/lramos33/big-calendar",
+  "bugs": {
+    "url": "https://github.com/lramos33/big-calendar/issues"
+  },
+  "main": "./dist/big-calendar.cjs",
+  "module": "./dist/big-calendar.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/big-calendar.mjs",
+      "require": "./dist/big-calendar.cjs"
+    },
+    "./styles": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CUSTOMIZATION.md"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --mode lib",
+    "build:dev": "vite build",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepublishOnly": "npm run build",
+    "test:build": "npm run build && npm pack"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    }
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -25,12 +77,10 @@
     "clsx": "^2.1.1",
     "date-fns": "^3",
     "lucide-react": "^0.488.0",
-    "react": "18.2.0",
     "react-aria-components": "^1.6.0",
     "react-day-picker": "8.10.1",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
-    "react-dom": "18.2.0",
     "react-hook-form": "^7.55.0",
     "tailwind-merge": "^3.2.0",
     "tailwindcss-animate": "^1.0.7",
