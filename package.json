@@ -1,26 +1,29 @@
 {
   "name": "big-calendar",
-  "version": "0.2.0",
-  "description": "A highly customizable React calendar component library with multiple views, drag-and-drop, and full API integration support. Originally from https://github.com/lramos33/big-calendar",
+  "version": "0.2.1",
+  "description": "React + Tailwind implementation of Big Calendar. Fork extending the original with host-app control: control views, events, and behavior via props and API from your app.",
   "keywords": [
     "react",
+    "tailwind",
     "calendar",
     "calendar-component",
     "react-calendar",
     "event-calendar",
     "scheduler",
     "date-picker",
-    "calendar-view"
+    "calendar-view",
+    "big-calendar",
+    "fork"
   ],
-  "author": "",
+  "author": "Noam Suissa (https://github.com/noamsuissa)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lramos33/big-calendar.git"
+    "url": "https://github.com/noamsuissa/big-calendar.git"
   },
-  "homepage": "https://github.com/lramos33/big-calendar",
+  "homepage": "https://github.com/noamsuissa/big-calendar#readme",
   "bugs": {
-    "url": "https://github.com/lramos33/big-calendar/issues"
+    "url": "https://github.com/noamsuissa/big-calendar/issues"
   },
   "main": "./dist/big-calendar.cjs",
   "module": "./dist/big-calendar.mjs",
