@@ -1,6 +1,6 @@
 {
   "name": "big-calendar",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A highly customizable React calendar component library with multiple views, drag-and-drop, and full API integration support. Originally from https://github.com/lramos33/big-calendar",
   "keywords": [
     "react",

@@ -77,7 +77,7 @@ export default defineConfig(({ command, mode }) => {
       },
     },
     server: {
-      port: 3000,
+      port: 3030,
       open: true,
     },
   }

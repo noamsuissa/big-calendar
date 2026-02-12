@@ -1,20 +1,9 @@
-@tailwind base;
+/* No @tailwind base — we're a library; Preflight would overwrite the host app. */
 @tailwind utilities;
 @tailwind components;
 
-/* html {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-} */
-
-@layer base {
-  .cal-root {
+/* Scoped design tokens and base styles for .cal-root only */
+.cal-root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -83,9 +72,9 @@ body {
     --calendar-event-gray-bg: 0 0% 98%;
     --calendar-event-gray-text: 0 0% 20%;
     @apply bigcal-bg-background bigcal-text-foreground;
-  }
+}
 
-  .cal-root.cal-dark {
+.cal-root.cal-dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
@@ -152,11 +141,8 @@ body {
     --calendar-event-gray-border: 0 0% 25%;
     --calendar-event-gray-bg: 0 0% 15%;
     --calendar-event-gray-text: 0 0% 80%;
-  }
 }
 
-@layer base {
-  .cal-root * {
-    @apply bigcal-border-border;
-  }
+.cal-root * {
+  @apply bigcal-border-border;
 }

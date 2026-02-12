@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import './styles/demo-base.css' /* Preflight for demo only; library build does not include this */
 import './styles/globals.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
