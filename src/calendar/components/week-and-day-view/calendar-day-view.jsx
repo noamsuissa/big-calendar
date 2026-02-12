@@ -77,13 +77,13 @@ export function CalendarDayView({ singleDayEvents, multiDayEvents }) {
 
                       <DroppableTimeBlock date={selectedDate} hour={hour} minute={0}>
                         <AddEventDialog startDate={selectedDate} startTime={{ hour, minute: 0 }}>
-                          <div className="bigcal-absolute bigcal-inset-x-0 bigcal-top-0 bigcal-h-[24px] bigcal-cursor-pointer bigcal-transition-colors bigcal-hover:bigcal-bg-accent" />
+                          <div className="bigcal-absolute bigcal-inset-x-0 bigcal-top-0 bigcal-h-[24px] bigcal-cursor-pointer bigcal-transition-colors hover:bigcal-bg-accent" />
                         </AddEventDialog>
                       </DroppableTimeBlock>
 
                       <DroppableTimeBlock date={selectedDate} hour={hour} minute={15}>
                         <AddEventDialog startDate={selectedDate} startTime={{ hour, minute: 15 }}>
-                          <div className="bigcal-absolute bigcal-inset-x-0 bigcal-top-[24px] bigcal-h-[24px] bigcal-cursor-pointer bigcal-transition-colors bigcal-hover:bigcal-bg-accent" />
+                          <div className="bigcal-absolute bigcal-inset-x-0 bigcal-top-[24px] bigcal-h-[24px] bigcal-cursor-pointer bigcal-transition-colors hover:bigcal-bg-accent" />
                         </AddEventDialog>
                       </DroppableTimeBlock>
 
@@ -91,13 +91,13 @@ export function CalendarDayView({ singleDayEvents, multiDayEvents }) {
 
                       <DroppableTimeBlock date={selectedDate} hour={hour} minute={30}>
                         <AddEventDialog startDate={selectedDate} startTime={{ hour, minute: 30 }}>
-                          <div className="bigcal-absolute bigcal-inset-x-0 bigcal-top-[48px] bigcal-h-[24px] bigcal-cursor-pointer bigcal-transition-colors bigcal-hover:bigcal-bg-accent" />
+                          <div className="bigcal-absolute bigcal-inset-x-0 bigcal-top-[48px] bigcal-h-[24px] bigcal-cursor-pointer bigcal-transition-colors hover:bigcal-bg-accent" />
                         </AddEventDialog>
                       </DroppableTimeBlock>
 
                       <DroppableTimeBlock date={selectedDate} hour={hour} minute={45}>
                         <AddEventDialog startDate={selectedDate} startTime={{ hour, minute: 45 }}>
-                          <div className="bigcal-absolute bigcal-inset-x-0 bigcal-top-[72px] bigcal-h-[24px] bigcal-cursor-pointer bigcal-transition-colors bigcal-hover:bigcal-bg-accent" />
+                          <div className="bigcal-absolute bigcal-inset-x-0 bigcal-top-[72px] bigcal-h-[24px] bigcal-cursor-pointer bigcal-transition-colors hover:bigcal-bg-accent" />
                         </AddEventDialog>
                       </DroppableTimeBlock>
                     </div>

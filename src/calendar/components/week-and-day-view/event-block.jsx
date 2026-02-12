@@ -9,7 +9,7 @@ import { EventDetailsDialog } from "@/calendar/components/dialogs/event-details-
 import { cn } from "@/lib/utils";
 
 const calendarWeekEventCardVariants = cva(
-  "bigcal-flex bigcal-select-none bigcal-flex-col bigcal-gap-0.5 bigcal-truncate bigcal-whitespace-nowrap bigcal-rounded-md bigcal-border bigcal-px-2 bigcal-py-1.5 bigcal-text-xs bigcal-focus-visible:bigcal-outline-none bigcal-focus-visible:bigcal-ring-1 bigcal-focus-visible:bigcal-ring-ring",
+  "bigcal-flex bigcal-select-none bigcal-flex-col bigcal-gap-0.5 bigcal-truncate bigcal-whitespace-nowrap bigcal-rounded-md bigcal-border bigcal-px-2 bigcal-py-1.5 bigcal-text-xs focus-visible:bigcal-outline-none focus-visible:bigcal-ring-1 focus-visible:bigcal-ring-ring",
   {
     variants: {
       color: {

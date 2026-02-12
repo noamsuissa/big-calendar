@@ -18,7 +18,7 @@ export function YearViewDayCell({ day, date, events }) {
     <button
       onClick={handleClick}
       type="button"
-      className="bigcal-flex bigcal-h-11 bigcal-flex-1 bigcal-flex-col bigcal-items-center bigcal-justify-start bigcal-gap-0.5 bigcal-rounded-md bigcal-pt-1 bigcal-hover:bg-accent bigcal-focus-visible:bigcal-outline-none bigcal-focus-visible:bigcal-ring-1 bigcal-focus-visible:bigcal-ring-ring"
+      className="bigcal-flex bigcal-h-11 bigcal-flex-1 bigcal-flex-col bigcal-items-center bigcal-justify-start bigcal-gap-0.5 bigcal-rounded-md bigcal-pt-1 hover:bigcal-bg-accent focus-visible:bigcal-outline-none focus-visible:bigcal-ring-1 focus-visible:bigcal-ring-ring"
     >
       <div
         className={cn(

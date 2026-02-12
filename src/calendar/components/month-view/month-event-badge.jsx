@@ -9,7 +9,7 @@ import { EventDetailsDialog } from "@/calendar/components/dialogs/event-details-
 import { cn } from "@/lib/utils";
 
 const eventBadgeVariants = cva(
-  "bigcal-mx-1 bigcal-flex bigcal-size-auto bigcal-h-6.5 bigcal-select-none bigcal-items-center bigcal-justify-between bigcal-gap-1.5 bigcal-truncate bigcal-whitespace-nowrap bigcal-rounded-md bigcal-border bigcal-px-2 bigcal-text-xs bigcal-focus-visible:bigcal-outline-none bigcal-focus-visible:bigcal-ring-1 bigcal-focus-visible:bigcal-ring-ring",
+  "bigcal-mx-1 bigcal-flex bigcal-size-auto bigcal-h-6.5 bigcal-select-none bigcal-items-center bigcal-justify-between bigcal-gap-1.5 bigcal-truncate bigcal-whitespace-nowrap bigcal-rounded-md bigcal-border bigcal-px-2 bigcal-text-xs focus-visible:bigcal-outline-none focus-visible:bigcal-ring-1 focus-visible:bigcal-ring-ring",
   {
     variants: {
       color: {
@@ -32,7 +32,7 @@ const eventBadgeVariants = cva(
         "gray-dot": "bigcal-bg-neutral-50 dark:bigcal-bg-neutral-900 [&_.bigcal-event-dot]:bigcal-fill-neutral-600",
       },
       multiDayPosition: {
-        first: "bigcal-relative bigcal-z-10 bigcal-mr-0 bigcal-w-[calc(100%_-_3px)] bigcal-rounded-r-none bigcal-border-r-0 [&>span]:bigcal-mr-2.5",
+        first: "bigcal-relative bigcal-z-10 bigcal-mr-0 bigcal-w-[calc(100%_+_1px)] bigcal-rounded-r-none bigcal-border-r-0 [&>span]:bigcal-mr-2.5",
         middle: "bigcal-relative bigcal-z-10 bigcal-mx-0 bigcal-w-[calc(100%_+_1px)] bigcal-rounded-none bigcal-border-x-0",
         last: "bigcal-ml-0 bigcal-rounded-l-none bigcal-border-l-0",
         none: "",

@@ -32,7 +32,7 @@ export function DayCell({ cell, events, eventPositions }) {
           className={cn(
             "bigcal-flex bigcal-size-6 bigcal-translate-x-1 bigcal-items-center bigcal-justify-center bigcal-rounded-full bigcal-text-xs bigcal-font-semibold hover:bigcal-bg-accent focus-visible:bigcal-outline-none focus-visible:bigcal-ring-1 focus-visible:bigcal-ring-ring lg:bigcal-px-2",
             !currentMonth && "bigcal-opacity-20",
-            isToday(date) && "bigcal-bg-primary bigcal-font-bold bigcal-text-primary-foreground bigcal-hover:bg-primary"
+            isToday(date) && "bigcal-bg-primary bigcal-font-bold bigcal-text-primary-foreground hover:bigcal-bg-primary"
           )}
         >
           {day}

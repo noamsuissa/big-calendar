@@ -31,7 +31,7 @@ export function YearViewMonth({ month, events }) {
       <button
         type="button"
         onClick={handleClick}
-        className="bigcal-w-full bigcal-rounded-t-lg bigcal-border bigcal-px-3 bigcal-py-2 bigcal-text-sm bigcal-font-semibold bigcal-hover:bg-accent bigcal-focus-visible:outline-none bigcal-focus-visible:ring-1 bigcal-focus-visible:ring-ring"
+        className="bigcal-w-full bigcal-rounded-t-lg bigcal-border bigcal-px-3 bigcal-py-2 bigcal-text-sm bigcal-font-semibold hover:bigcal-bg-accent focus-visible:bigcal-outline-none focus-visible:bigcal-ring-1 focus-visible:bigcal-ring-ring"
       >
         {monthName}
       </button>
