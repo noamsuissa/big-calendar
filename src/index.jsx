@@ -77,6 +77,7 @@ export { TimeInput } from "./components/ui/time-input";
 export { Form, FormItem, FormLabel, FormControl, FormDescription, FormMessage, FormField, useFormField } from "./components/ui/form";
 
 // Layout Components
+export { CalendarRoot, useIsDark } from "./components/layout/calendar-root";
 export { Header } from "./components/layout/header";
 export { ToggleTheme } from "./components/layout/change-theme";
 

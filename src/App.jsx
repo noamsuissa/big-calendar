@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CalendarProvider, ClientContainer, Header, ChangeBadgeVariantInput, ChangeVisibleHoursInput, ChangeWorkingHoursInput } from './index'
+import { CalendarProvider, CalendarRoot, ClientContainer, Header, ChangeBadgeVariantInput, ChangeVisibleHoursInput, ChangeWorkingHoursInput } from './index'
 import { USERS_MOCK, CALENDAR_ITEMS_MOCK } from './calendar/mocks'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './components/ui/accordion'
 
@@ -105,6 +105,7 @@ function App() {
       onEventUpdate={handleEventUpdate}
       onEventDelete={handleEventDelete}
     >
+      <CalendarRoot>
       <div className="bigcal-min-h-screen bigcal-bg-background">
         <Header />
         
@@ -150,6 +151,7 @@ function App() {
           </div>
         </main>
       </div>
+      </CalendarRoot>
     </CalendarProvider>
   )
 }
