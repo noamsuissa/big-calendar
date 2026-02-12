@@ -1,0 +1,4 @@
+/* Demo/dev only: restores Preflight so the demo app doesn't look like Windows 98.
+ * Not imported by the library build — only by the demo app (main.jsx).
+ * Consumer apps that use Tailwind with @tailwind base get their own Preflight. */
+@tailwind base;

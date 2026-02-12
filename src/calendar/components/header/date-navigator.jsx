@@ -1,0 +1,47 @@
+import { useMemo } from "react";
+import { formatDate } from "date-fns";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+import { useCalendar } from "@/calendar/contexts/calendar-context";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+
+import { getEventsCount, navigateDate, rangeText } from "@/calendar/helpers";
+
+export function DateNavigator({ view, events }) {
+  const { selectedDate, setSelectedDate } = useCalendar();
+
+  const month = formatDate(selectedDate, "MMMM");
+  const year = selectedDate.getFullYear();
+
+  const eventCount = useMemo(() => getEventsCount(events, selectedDate, view), [events, selectedDate, view]);
+
+  const handlePrevious = () => setSelectedDate(navigateDate(selectedDate, view, "previous"));
+  const handleNext = () => setSelectedDate(navigateDate(selectedDate, view, "next"));
+
+  return (
+    <div className="bigcal-space-y-0.5">
+      <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+        <span className="bigcal-text-lg bigcal-font-semibold">
+          {month} {year}
+        </span>
+        <Badge variant="outline" className="bigcal-px-1.5">
+          {eventCount} events
+        </Badge>
+      </div>
+
+      <div className="bigcal-flex bigcal-items-center bigcal-gap-2">
+        <Button variant="outline" className="bigcal-size-6.5 bigcal-px-0 bigcal-[&_svg]:bigcal-size-4.5" onClick={handlePrevious}>
+          <ChevronLeft />
+        </Button>
+
+        <p className="bigcal-text-sm bigcal-text-muted-foreground">{rangeText(view, selectedDate)}</p>
+
+        <Button variant="outline" className="bigcal-size-6.5 bigcal-px-0 bigcal-[&_svg]:bigcal-size-4.5" onClick={handleNext}>
+          <ChevronRight />
+        </Button>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,46 @@
+import * as React from "react"
+import * as AccordionPrimitive from "@radix-ui/react-accordion"
+import { ChevronDown } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+
+const Accordion = AccordionPrimitive.Root
+
+const AccordionItem = React.forwardRef(({ className, ...props }, ref) => (
+  <AccordionPrimitive.Item
+    ref={ref}
+    className={cn("bigcal-border-b", className)}
+    {...props}
+  />
+))
+AccordionItem.displayName = "AccordionItem"
+
+const AccordionTrigger = React.forwardRef(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Header className="bigcal-flex">
+    <AccordionPrimitive.Trigger
+      ref={ref}
+      className={cn(
+        "bigcal-flex bigcal-flex-1 bigcal-items-center bigcal-justify-between bigcal-py-4 bigcal-text-sm bigcal-font-medium bigcal-transition-all hover:bigcal-underline bigcal-text-left [&[data-state=open]>svg]:bigcal-rotate-180",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <ChevronDown className="bigcal-h-4 bigcal-w-4 bigcal-shrink-0 bigcal-text-muted-foreground bigcal-transition-transform bigcal-duration-200" />
+    </AccordionPrimitive.Trigger>
+  </AccordionPrimitive.Header>
+))
+AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
+
+const AccordionContent = React.forwardRef(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Content
+    ref={ref}
+    className="bigcal-overflow-hidden bigcal-text-sm data-[state=closed]:bigcal-animate-accordion-up data-[state=open]:bigcal-animate-accordion-down"
+    {...props}
+  >
+    <div className={cn("bigcal-pb-4 bigcal-pt-0", className)}>{children}</div>
+  </AccordionPrimitive.Content>
+))
+AccordionContent.displayName = AccordionPrimitive.Content.displayName
+
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
